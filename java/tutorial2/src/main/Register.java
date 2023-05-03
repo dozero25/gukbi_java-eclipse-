@@ -15,8 +15,8 @@ public class Register {
 		
 		member1.showMember();
 		
-		member2.setUserId(null);
-		member2.setPassword(null);
+		member2.setUserId("");
+		member2.setPassword("");
 		member2.setAge(0);
 		member2.setSalary(0);
 		

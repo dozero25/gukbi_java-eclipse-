@@ -28,6 +28,7 @@ public class Member {
 		System.out.println("비밀번호 : " + getPassword());
 		System.out.println("나이 : " + getAge());
 		System.out.println("급여 : " + getSalary());
+		System.out.println();
 	}
 
 	public String getUserId() {
@@ -35,11 +36,11 @@ public class Member {
 	}
 
 	public void setUserId(String userId) {
-		if(userId.equals(null)) {
-			this.userId = "aaa";
+		if(userId.equals("")) {
+			userId = "aaa";
+			this.userId = userId;
 		}
 		else {
-			System.out.println("아이디");
 			this.userId = userId;
 		}
 	}
@@ -49,11 +50,11 @@ public class Member {
 	}
 
 	public void setPassword(String password) {
-		if(password.equals(null)) {
-			this.password = "123";
+		if(password.equals("")) {
+			password = "123";
+			this.password = password;
 		}
 		else {
-			System.out.println("비밀번호");
 			this.password = password;
 		}
 		
@@ -65,7 +66,8 @@ public class Member {
 
 	public void setAge(int age) {
 		if(age == 0 || age < 20) {
-			this.age = 20;
+			age = 20;
+			this.age = age;
 		}
 		this.age = age;
 	}
@@ -76,7 +78,8 @@ public class Member {
 
 	public void setSalary(double salary) {
 		if(salary == 0) {
-			this.salary = 1000000;
+			salary = 1000000;
+			this.salary = salary;
 		}
 		this.salary = salary;
 	}
