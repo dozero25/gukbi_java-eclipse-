@@ -49,7 +49,4 @@ public class Calc5 {
 		this.math = math;
 	}
 
-	
-	
-	
 }

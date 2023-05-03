@@ -21,9 +21,6 @@ public class ShowOut {
 		
 		calc.sum(55, 60);
 		calc.sum(-50, 60);
-
+		
 	}
-
-	
-
 }

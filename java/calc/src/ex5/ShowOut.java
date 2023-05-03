@@ -9,6 +9,13 @@ import java.util.Scanner;
 //(4) 객체를 별도로 작성하여 작성한 객체에 메소드를 작성하여 출력한다.
 //프로젝트명, 패키지명, 파일이름, 객체이름, 필드이름, 메소드이름 등은 임의로 작성하여도 좋다.
 
+/*
+	1. 프로그램 명 : 국어, 영어 계산 프로그램
+	2. 작성일 : 2023.05.03
+	3. 윤도영
+	4. 내용 : 국어, 영어 점수를 Scanner로 입력 받아 계산
+*/
+
 public class ShowOut {
 	
 	public static void main(String[] args) {
@@ -25,6 +32,4 @@ public class ShowOut {
 		
 		calc.sum();
 	}
-	
-	
 }

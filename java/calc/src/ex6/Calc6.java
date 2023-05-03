@@ -42,6 +42,4 @@ public class Calc6 {
 		subject.add(grade);	
 	}
 	
-	
-	
 }

@@ -29,10 +29,6 @@ public class ShowOut {
 		
 		calc2.addSubject(50, 60, -70);
 		calc2.sum();
-		
-		
-		
 
 	}
-
 }

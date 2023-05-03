@@ -8,6 +8,13 @@ import java.util.Scanner;
 //(3) 메소드를 이용하여 총점 및 평균을 구하는 프로그램을 작성한다.
 //(4) 객체를 별도로 작성하여 작성한 객체에 메소드를 작성하여 출력한다.
 
+/*
+	1. 프로그램 명 : 국어, 영어 계산 프로그램
+	2. 작성일 : 2023.05.03
+	3. 윤도영
+	4. 내용 : 국어, 영어 점수를 Scanner로 입력 받아 배열에 넣어 계산
+*/
+
 public class showOut {
 
 	public static void main(String[] args) {
