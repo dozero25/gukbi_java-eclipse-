@@ -23,9 +23,10 @@ public class Employee {
 	
 	public void showEmpInfo() {
 		System.out.println("[근로자 정보 출력]");
-		System.out.println("사원 번호 : ");
-		System.out.println("이름 : ");
-		System.out.println("나이 : ");
+		System.out.println("사원 번호 : " + empId);
+		System.out.println("이름 : " + empName);
+		System.out.println("나이 : " + empAge);
+		System.out.println("부서 : " + department);
 	}
 	
 	public String getName() {

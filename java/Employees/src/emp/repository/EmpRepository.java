@@ -33,7 +33,9 @@ public class EmpRepository {
 		for(int i = 0; i < employees.length; i++) {
 			tempArray[i] = employees[i];
 		}
-		return 1;
+		employees = tempArray;
+		
+		return employees.length -1;
 	}
 	
 	
