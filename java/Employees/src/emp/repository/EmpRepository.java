@@ -58,7 +58,7 @@ public class EmpRepository {
 		return employees[index];
 	}
 	
-	public Employee remvoeEmp(int index) {
+	public Employee removeEmp(int index) {
 		Employee employee = employees[index];
 		employees[index] = null;
 		return employee;
