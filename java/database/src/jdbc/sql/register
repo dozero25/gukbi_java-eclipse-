@@ -1,0 +1,31 @@
+drop table register;
+
+use grp;
+
+create table register(
+	id int(20) not null auto_increment,
+	userid varchar(20) not null,
+	passwd varchar(200) not null,
+	primary key(id)
+);
+
+show tables;
+
+create table board(
+	id int(20) not null auto_increment,
+	subject varchar(100) not null,
+	writer varchar(10) not null,
+	content text,
+	regdate datetime,
+	primary key(id)
+);
+
+show tables;
+
+insert into register values(0, 'dozero1', '1234');
+insert into register values(0, 'dozero2', '0000');
+insert into register values(0, 'dozero3', '1111');
+insert into register values(0, 'dozero4', '2222');
+insert into register values(0, 'dozero5', '3333');
+
+select * from register;
