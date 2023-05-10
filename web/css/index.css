@@ -1,0 +1,44 @@
+* {
+    font-family: 'Roboto', 'sans-serif';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    color : #0000ff;
+    text-decoration: none;
+    
+    margin: 0px auto;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.main-title {
+    text-align: center;
+    margin: 10px 20px;
+
+    font-size: 25px;
+    color: #f00000;
+    
+    cursor: pointer;
+}
+
+.img-back {
+    width: 500px;
+    height: 500px;
+
+    display: flex;
+    margin: 15px auto;
+
+    border-radius: 50%;
+
+}
+.img-back:hover {
+    cursor: pointer;
+    
+    transform: scale(1.2);
+    /* rotate(-30deg);  회전*/
+    transition: 0.5s; 
+}
