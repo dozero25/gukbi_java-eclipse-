@@ -11,6 +11,8 @@ create table register(
 
 show tables;
 
+drop table board;
+
 create table board(
 	id int(20) not null auto_increment,
 	subject varchar(100) not null,
@@ -29,3 +31,8 @@ insert into register values(0, 'dozero4', '2222');
 insert into register values(0, 'dozero5', '3333');
 
 select * from register;
+
+insert into board values(0, '공지사항', '관리자', '예시 게시물 등록입니다.', now());
+insert into board values(0, '공지사항', '관리자', '사진을 등록합니다.', now());
+insert into board values(0, '놀이터', '회원', '집에 가고 싶다.', now());
+select * from board;
