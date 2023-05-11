@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블록타입, 인라인타입</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        div {
+            background-color: #eeff00;
+        }
+        span {
+            background-color: #ff0080;
+        }
+    </style>
+</head>
+<body>
+    1. 한 줄을 다 차지하는 블록타입 <br>
+        - 한줄에 하나 씩만 배치<br>
+    2. 내용물 만큼만 차지하는 인라인<br>
+        -뒤에 있는 요소들과 나란히 배치<br>
+        <br>
+    span, a, img ... 제외하면 전부 블록타입<br>
+
+
+    <div>block 1</div> 
+
+    <span>inline 2</span>
+    <span>inline 3</span>
+
+    <a href="https://www.naver.com"  target="_blank">네이버</a>
+    <a href="https://www.daum.net">다음</a>
+</body>
+</html>

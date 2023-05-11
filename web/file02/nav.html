@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Github Navigator Eample</title>
+    <!-- 
+        폰트
+        아이콘 설정
+        리셋 -->
+</head>
+<body>
+    <div class="logo">
+        <img src="images/logo.jpg">
+    </div>
+    <header>
+        <nav class="menu-list">
+            <div class="menu-selected"><i class="fa-solid fa-code"></i> Code</div>
+            <div class="menu-selected"><i class="fa-regular fa-star"></i> Issues</div>
+            <div class="menu-selected"><i class="fa-solid fa-timeline"></i> Pull requests</div>
+            <div class="menu-selected"><i class="fa-regular fa-circle-play"></i> Actions</div>
+            <div class="menu-selected"><i class="fa-solid fa-diagram-project"></i> Projects</div>
+            <div class="menu-selected"><a href="https://www.naver.com" class="select-a"> naver</a></div>
+        </nav>
+    </header>
+    <main>
+        <menu class="main-list">
+            <span class="main-selected"><i class="fa-solid fa-code"></i> Code</span>
+            <span class="main-selected"><i class="fa-regular fa-star"></i> Issues</span>
+            <span class="main-selected"><i class="fa-solid fa-timeline"></i> Pull requests</span>
+            <span class="main-selected"><i class="fa-regular fa-circle-play"></i> Actions</span>
+            <span class="main-selected"><i class="fa-solid fa-diagram-project"></i> Projects</span>
+            <span class="main-selected"><a href="https://www.naver.com" class="select-b"> naver</a></span>
+        </menu>
+
+        <div class="input-table">
+            <form name="frm">
+                <input type="text" class="input-box" name="box">
+                <button class="input-button" onclick="chkSearch()">검색</button>
+            </form>
+        </div>
+        <section>
+            <table>
+                <thead class="table-head">
+                    <tr>
+                        <td>No.</td>
+                        <td>Subject</td>
+                        <td>writer</td>
+                        <td>content</td>
+                        <td>Regote</td>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr>
+                        <td>2</td>
+                        <td>게시판 테스트</td>
+                        <td>홍길동</td>
+                        <td>게시판 등록입니다.</td>
+                        <td>2023-05-11</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>게시판 테스트</td>
+                        <td>홍길동</td>
+                        <td>게시판 등록입니다.</td>
+                        <td>2023-05-11</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </section>
+    </main>
+    <script src="/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .imgHover img {
+            width: 200px;
+        }
+        .imgHover img:hover{
+            transform: scale(1.5);
+            transition: 0.2;
+        }
+
+        .imgHover2 {
+            overflow: hidden;
+        }
+
+        .imgHover2 img {
+            width: 200px;
+        }
+        .imgHover2 img:hover{
+            transform: scale(1.2);
+            transition: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="imgHover">
+        <img src="images/logo.jpg" alt="사진">
+    </div>
+
+    <div class="imgHover2">
+        <img src="images/logo.jpg" alt="사진">
+    </div>
+</body>
+</html>
