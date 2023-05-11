@@ -35,4 +35,5 @@ select * from register;
 insert into board values(0, '공지사항', '관리자', '예시 게시물 등록입니다.', now());
 insert into board values(0, '공지사항', '관리자', '사진을 등록합니다.', now());
 insert into board values(0, '놀이터', '회원', '집에 가고 싶다.', now());
+
 select * from board;

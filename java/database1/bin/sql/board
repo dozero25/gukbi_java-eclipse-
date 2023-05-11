@@ -1,0 +1,18 @@
+create database grp;
+
+use grp;
+
+create table board (
+	id int(10) not null auto_increment,
+	subject varchar(20) not null,
+	writer varchar(20) not null,
+	content text,
+	upload varchar(255),
+	visit int,
+	regdate datetime, 
+	primary key(id)
+);
+
+insert into board values (0,'공지사항', '관리자', '공지합니다.', '', 0 , now());
+
+select * from board;
