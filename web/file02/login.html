@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/login.css">
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <title>loginpage</title>
 </head>
 <body>
@@ -14,7 +16,7 @@
             <div class="login-box">
                 <div class="inner-box">
                     <div class="id-input">
-                        <div class="innerbox-title">userid</div>
+                        <div class="innerbox-title">Userid</div>
                         <input type="text" id="id">
                     </div>
                     <div class="pw-input">
@@ -22,6 +24,7 @@
                         <input type="password" id="pw">
                     </div>
                     <button type="button" class="login-button">Login</button>
+                    <button type="button" class="naver-button">네이버</button>
                 </div>
             </div>
         </form>

@@ -24,6 +24,7 @@
 
 window.onload = () => {
     clickEvent.getInstance().onclickEvent();
+    clickEvent.getInstance().onclickNaverButton();
 }
 
 class clickEvent{
@@ -60,5 +61,13 @@ class clickEvent{
             } 
         };
     }
+
+    onclickNaverButton() {
+        const naverButton = document.querySelector(".naver-button");
+
+        naverButton.onclick = () => {
+           location.href = "https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com";
+        }
+    };
 }
 
