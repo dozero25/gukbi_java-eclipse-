@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>loginpage</title>
+</head>
+<body>
+    <main>
+        <form method="" enctype="multipart/form-data" action="doLogin" name="frm">
+            <div class="login-box">
+                <div class="inner-box">
+                    <div class="id-input">
+                        <div class="innerbox-title">userid</div>
+                        <input type="text" id="id">
+                    </div>
+                    <div class="pw-input">
+                        <div class="innerbox-title">Password</div>
+                        <input type="password" id="pw">
+                    </div>
+                    <button type="button" class="login-button" onclick="login()">Login</button>
+                </div>
+            </div>
+        </form>
+    </main>
+    <script src="/js/login.js"></script>
+</body>
+</html>
