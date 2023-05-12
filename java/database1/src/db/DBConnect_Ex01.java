@@ -51,6 +51,7 @@ public class DBConnect_Ex01 {
 			pstmt = conn.prepareStatement(query1);
 			// 정상동작하면 1 아니면 0
 			int result =  pstmt.executeUpdate();
+			System.out.println(result);
 			
 			if(result > 0) {
 				System.out.println("데이터베이스가 삭제되었습니다.");

@@ -1,0 +1,13 @@
+drop database groupware;
+
+create database groupware;
+use groupware;
+
+create table board(
+b_id int(20) not null auto_increment,
+title varchar(255) not null,
+writer varchar(20) not null,
+content text,
+regdate datetime,
+primary key(b_id)
+);
