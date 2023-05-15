@@ -87,13 +87,7 @@ public class Board_Ex {
 					pstmt = conn.prepareStatement(query1);
 					rs = pstmt.executeQuery(query1);
 					
-					while(rs.next()) {
-						System.out.println("번호 : "+rs.getInt(1)
-						+" / 제목 : "+rs.getString(2)
-						+" / 작성자 : "+rs.getString(3)
-						+" / 내용 : "+rs.getString(4)
-						+" / 등록일 : "+rs.getDate(5));
-					}
+					rs.toString();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

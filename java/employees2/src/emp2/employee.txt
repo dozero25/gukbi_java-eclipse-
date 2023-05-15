@@ -1,0 +1,16 @@
+drop database emp;
+create database emp;
+show databases;
+use emp;
+
+create table employees(
+id int not null auto_increment,
+userId varchar(20) not null,
+username varchar(20) not null,
+passwd varchar(200) not null,
+regdate datetime,
+age int not null,
+primary key(id)
+);
+
+desc employees;
