@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: #000000;
+    text-decoration-line: none;
+}
+
+.menu-box {
+    display: flex;
+    padding: 5px;
+
+    border: 1px solid #dbdbdb;
+}
+
+.logo {
+    justify-content: left;
+}
+
+.center-menu {
+    text-align: center;
+    margin: 0 auto;
+
+    padding-top: 25px;
+}
+
+.center-menu a {
+    padding: 5px 10px;
+}
+
+.right-menu {
+    justify-content: right;
+
+    padding : 25px 15px 0px 0px;
+}
+
+.right-menu a {
+    padding: 5px 10px;
+}
