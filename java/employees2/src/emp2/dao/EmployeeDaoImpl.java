@@ -3,6 +3,7 @@ package emp2.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import emp2.db.DBConnect;
 import emp2.model.Employee;
@@ -35,8 +36,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 			} else {
 				System.out.println("Error!! Contact the manager");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
 	}
 
@@ -59,8 +60,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 				System.out.print("/ Age : "+rs.getInt(6)+"\t");
 				System.out.println("/ Address : "+rs.getString(7)+"\t");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
 	}
 	
@@ -83,14 +84,14 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 				System.out.print("Age : "+rs.getInt(6)+"\t");
 				System.out.println("Address : "+rs.getString(7)+"\t");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		String sql = "UPDATE employees SET userId = ?, username = ?, passwd = ?, age = ?, address = ? WHERE id = ?";
+		String sql = "UPDATE employees SET userId = ?, username = ?, passwd = ?, age = ?, regdate = now(), address = ? WHERE id = ?";
 		
 		conn = DBConnect.getConnection();
 		
@@ -111,8 +112,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 				System.out.println("Error!! Contact the manager");
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
 	}
 
@@ -132,8 +133,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 			} else {
 				System.out.println("Error!! Contact the manager");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
 	}
 	
