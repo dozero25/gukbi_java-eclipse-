@@ -2,6 +2,7 @@ package emp2.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnect {
 	// 데이터베이스 연결 객체를 하나만 만들어 공유해서 사용
@@ -17,8 +18,8 @@ public class DBConnect {
 			
 			conn = DriverManager.getConnection(url, userId, userPw);
 			
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch(SQLException sqle) {
+			sqle.printStackTrace();
 		}
 		return conn;
 	}

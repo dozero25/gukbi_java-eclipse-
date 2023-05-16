@@ -23,6 +23,7 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, employee.getUserId());
 			pstmt.setString(2, employee.getUsername());
 			pstmt.setString(3, employee.getPasswd());
@@ -137,7 +138,4 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 			sqle.printStackTrace();
 		}
 	}
-	
-	
-
 }
