@@ -17,7 +17,7 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 	
 	@Override
 	public void addEmployee(Employee employee) {
-		String sql = "INSERT INTO employees(userId, username, passwd, regdate, age) VALUES(?, ?, ?, now(), ?)";
+		String sql = "INSERT INTO employees(userId, username, passwd, regdate, age, address) VALUES(?, ?, ?, now(), ?, ?)";
 		conn = DBConnect.getConnection();
 		
 		try {
@@ -26,6 +26,7 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 			pstmt.setString(2, employee.getUsername());
 			pstmt.setString(3, employee.getPasswd());
 			pstmt.setInt(4, employee.getAge());
+			pstmt.setString(5, employee.getAddress());
 			
 			int result = pstmt.executeUpdate();
 			
@@ -55,12 +56,14 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 				System.out.print("/ Username : "+rs.getString(3)+"\t");
 				System.out.print("/ Passwd : "+rs.getString(4)+"\t");
 				System.out.print("/ Regdate : "+rs.getDate(5)+"\t");
-				System.out.println("/ Age : "+rs.getInt(6)+"\t");
+				System.out.print("/ Age : "+rs.getInt(6)+"\t");
+				System.out.println("/ Address : "+rs.getString(7)+"\t");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 
 	@Override
 	public void viewAllEmployee() {
@@ -77,7 +80,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 				System.out.print("Username : "+rs.getString(3)+"\t");
 				System.out.print("Passwd : "+rs.getString(4)+"\t");
 				System.out.print("Regdate : "+rs.getDate(5)+"\t");
-				System.out.println("Age : "+rs.getInt(6)+"\t");
+				System.out.print("Age : "+rs.getInt(6)+"\t");
+				System.out.println("Address : "+rs.getString(7)+"\t");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,7 +90,7 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		String sql = "UPDATE employees SET userId = ?, username = ?, passwd = ?, age = ? WHERE id = ?";
+		String sql = "UPDATE employees SET userId = ?, username = ?, passwd = ?, age = ?, address = ? WHERE id = ?";
 		
 		conn = DBConnect.getConnection();
 		
@@ -96,7 +100,8 @@ public class EmployeeDaoImpl implements EmployeeDaoInter{
 			pstmt.setString(2, employee.getUsername());
 			pstmt.setString(3, employee.getPasswd());
 			pstmt.setInt(4, employee.getAge());
-			pstmt.setInt(5, employee.getId());
+			pstmt.setString(5, employee.getAddress());
+			pstmt.setInt(6, employee.getId());
 			
 			int result = pstmt.executeUpdate();
 			

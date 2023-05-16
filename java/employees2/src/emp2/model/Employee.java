@@ -8,16 +8,18 @@ public class Employee {
 	private String passwd;
 	private String regdate;
 	private int age;
+	private String address;
 	
 	public Employee() {}
 
-	public Employee(int id, String userId, String username, String passwd, String regdate, int age) {
+	public Employee(int id, String userId, String username, String passwd, String regdate, int age, String address) {
 		this.id = id;
 		this.userId = userId;
 		this.username = username;
 		this.passwd = passwd;
 		this.regdate = regdate;
 		this.age = age;
+		this.address = address;
 	}
 
 	// public void showInfo(){}
@@ -25,12 +27,11 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", userId=" + userId + ", username=" + username + ", passwd=" + passwd
-				+ ", regdate=" + regdate + ", age=" + age + ", getId()=" + getId() + ", getUserId()=" + getUserId()
-				+ ", getUsername()=" + getUsername() + ", getPasswd()=" + getPasswd() + ", getAge()=" + getAge()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", regdate=" + regdate + ", age=" + age + ", address=" + address + ", getId()=" + getId()
+				+ ", getUserId()=" + getUserId() + ", getUsername()=" + getUsername() + ", getPasswd()=" + getPasswd()
+				+ ", getAge()=" + getAge() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
-	
 
 	public int getId() {
 		return id;
@@ -72,9 +73,13 @@ public class Employee {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
-	
-	
-	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+		
 }

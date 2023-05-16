@@ -45,11 +45,16 @@ public class Employee_Ex {
 				System.out.print("age > ");
 				int age = Integer.parseInt(sc.nextLine());
 				
+				System.out.print("주소 > ");
+				String address = sc.nextLine();
+				
 				Employee emp = new Employee();
+				
 				emp.setUserId(userId);
 				emp.setUsername(username);
 				emp.setPasswd(passwd);
 				emp.setAge(age);
+				emp.setAddress(address);
 				
 				edi.addEmployee(emp);
 				break;
@@ -82,17 +87,21 @@ public class Employee_Ex {
 				String updateUsername = sc.nextLine();
 				
 				System.out.print("passwd > ");
-				String UpdatePasswd = sc.nextLine();
+				String updatePasswd = sc.nextLine();
 				
 				System.out.print("age > ");
-				int UpdateAge = Integer.parseInt(sc.nextLine());
+				int updateAge = Integer.parseInt(sc.nextLine());
+				
+				System.out.print("address > ");
+				String updateAddress = sc.nextLine();
 				
 				Employee emp1 = new Employee();
 				
 				emp1.setUserId(updateUserId);
 				emp1.setUsername(updateUsername);
-				emp1.setPasswd(UpdatePasswd);
-				emp1.setAge(UpdateAge);
+				emp1.setPasswd(updatePasswd);
+				emp1.setAge(updateAge);
+				emp1.setAddress(updateAddress);
 				emp1.setId(num1);
 				
 				edi.updateEmployee(emp1);
