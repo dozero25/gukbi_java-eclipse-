@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이퍼 링크</title>
+    <style>
+        /* 기본여백 */
+        /* 초기화 작업 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        ul, li {
+            list-style: none;
+            padding: 10px 15px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 15px;
+        }
+        /* 초기화 작업 */
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            display: flex;
+            background-color: #000000;
+            padding: 20px 0px;
+        }
+
+        ul li a {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 기본 색상 : 보라색 -> 초기화 시키는 작업
+    a, a:hover -->
+
+    <ul class="nav">
+        <li><a href="https://www.naver.com" target="_blank">메뉴1</a></li>
+        <li><a href="https://www.naver.com">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+    </ul>
+
+    <nav>
+        <ul>
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero {
+    background-image: url('/images/background6.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 1080px;
+
+    display: flex;
+    /* 사각형 가로 정렬 */
+    justify-content: center;
+    /* 사각형 세로 정렬 */
+    align-items: center; 
+}
+
+.hero section {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 65px 50px;
+    width: 800px;
+}
+
+.sub-title {
+    font-size: 18px;
+}
+
+.contents {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 15px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-wrap button {
+    padding: 5px 16px;
+
+    font-size: 14px;
+    border: 1px solid #ff0fd7b6;
+    border-radius: 5px;
+    background-color: #ff0fd7b6;
+
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #ff0000da;
+    background-color: #ff0000da;
+}
