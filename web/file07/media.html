@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <style>
+        .box {
+            width: 1500px;
+            height: 500px;
+            background-color: #000000;
+
+            color: #ffffff;
+        }
+
+        @media screen and (max-width:1200px) {
+            .box {
+                background-color: #f00000;
+            }
+        } 
+
+        @media screen and (max-width:768px) {
+            .box {
+                background-color: #0f0;
+            }
+        }
+        @media screen and (max-width:320px) {
+            .box {
+                background-color: #00f;
+            }
+        } 
+        
+        /* max를 사용하면 큰 해상도에서 작은 해상도 순으로
+        min을 사용하면 작은 해사오에서 큰 해상도 순으로 */
+    </style>
+
+</head>
+<body>
+    <div class="box">box1</div>
+</body>
+</html>

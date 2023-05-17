@@ -1,0 +1,142 @@
+/* 헤더 */
+nav {
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.nav-wrap {
+    width: 1200px;
+    padding: 10px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.menu ul {
+    display: flex;
+}
+
+.menu ul li {
+    padding: 20px;
+}
+
+.menu ul li a{
+    font-family: 'Lato', sans-serif;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+
+    color: #8b8b8b;
+}
+
+.menu ul li a.active {
+    color: #b10101;
+}
+
+.right-line {
+    border-right: 1px solid #dbdbdb;
+    
+}
+
+.menu-img {
+    background-image: url('/exam/images/vase2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.menu-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.menu-text {
+    width: 500px;
+    height: 300px;
+}
+
+.menu-text h5 {
+    letter-spacing: 3px;
+    color: #f0000075;
+}
+
+.menu-text h1 {
+    font-size: 45px;
+    letter-spacing: 4px;
+}
+
+.menu-text h6 {
+    font-size: 16px;
+    font-weight: 200;
+    color: #8b8b8b;
+}
+
+.menu-btu {
+    width: 200px;
+    height: 60px;
+
+    margin-top: 50px;
+
+    background-color: #a80000;
+    border: 1px solid #a80000;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+.menu-btu:hover {
+    border: 1px solid #000000;
+    background-color: #000000;
+    transform: translateY(-10%);
+    transition: 0.3s;
+}
+
+/* 메인 */
+.main-one {
+    width: 100%;
+    height: 1100px;
+
+    margin-top: 200px;
+
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.one-top{
+    text-align: center;
+}
+
+.one-top h6 {
+    color: #da0101bd;  
+    letter-spacing: 3px;
+
+    font-size: 13px;
+    font-weight: 200;
+
+    margin-bottom: 60px;
+}
+
+.one-top h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
+}

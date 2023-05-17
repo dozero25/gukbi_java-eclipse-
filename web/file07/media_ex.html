@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+        * {
+            margin : 0;
+            padding : 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 50px;
+        }
+
+        .trigger {
+            display: none;
+            text-align: right;
+        }
+
+        @media screen and (max-width:600px) {
+            .trigger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Portfoli0</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="trigger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+    
+</body>
+</html>
