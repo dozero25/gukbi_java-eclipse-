@@ -1,0 +1,40 @@
+use employees;
+
+create table emp(
+emp_id int not null auto_increment, -- pk
+emp_name varchar(20),
+emp_salary int,
+emp_group varchar(20), -- 부서명
+emp_regdate date,
+primary key(emp_id)
+);
+
+desc emp;
+
+INSERT INTO emp(emp_name, emp_salary, emp_group, emp_regdate) values('홍길동', 2300000, '인사과', '2022-01-30');
+INSERT INTO emp(emp_name, emp_salary, emp_group, emp_regdate) values('김철수', 1700000, '개발과', '2022-12-15');
+INSERT INTO emp(emp_name, emp_salary, emp_group, emp_regdate) values('안영희', 4500000, '마케팅과', '2017-01-30');
+INSERT INTO emp(emp_name, emp_salary, emp_group, emp_regdate) values('이진수', 3000000, '총무과', '2019-11-20');
+INSERT INTO emp(emp_name, emp_salary, emp_group, emp_regdate) values('김리아', 2700000, '인사과', '2021-05-27');
+
+SELECT * FROM emp ORDER BY emp_id DESC;
+
+SELECT COUNT(*) as total FROM emp;
+
+SELECT COUNT(*) as 합계 FROM emp;
+
+SELECT sum(emp_salary) FROM emp where emp_group = '자제과';
+// emp에서 자제과의 급여 합계를 표시
+
+SELECT emp_group, emp_salary FROM emp;
+// emp에서 부서와 급여를 표시
+
+SELECT emp_group, sum(emp_salary) FROM emp GROUP BY emp_group;
+// emp에서 부서별로 급여 총합를 표시
+
+SELECT emp_group, avg(emp_salary) FROM emp GROUP BY emp_group;
+// emp에서 부서별로 급여 평균을 표시
+
+SELECT emp_group, sum(emp_salary) FROM emp GROUP BY emp_group HAVING sum(emp_salary) >= 50000000;
+// emp에서 부서별로 급여 총합을 표시, 단 급여 총합이 5천만 이상인것, 
+
