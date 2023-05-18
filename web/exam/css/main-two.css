@@ -1,0 +1,55 @@
+.main-two {
+    width: 100%;
+    height: 850px;
+
+    margin-top: 50px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.two-inner {
+    width: 900px;
+
+    margin: auto;
+}
+
+.two-imgtext1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.two-text1 {
+    margin: auto;
+    width: 400px;
+}
+
+.two-inner h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.two-inner p {
+    margin: 20px 0px;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #8b8b8b;
+}
+
+.two-inner a{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.two-inner a:hover{
+    text-decoration: underline;
+}
+
+.two-imgtext2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.two-text2 {
+    width: 400px;
+    margin: auto 0;
+}
+

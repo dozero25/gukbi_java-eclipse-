@@ -1,0 +1,47 @@
+.footer-container {
+    margin: 0 auto;
+}
+
+.footer-title {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.footer-title a{
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.footer-title p{
+    margin: 20px 0px;
+    font-size: 12px;
+    color: #8d8c8c;
+}
+
+.footer-tell {
+    display: flex;
+
+    width: 80%;
+    margin-top: 40px;
+
+    transform: translateX(11%);
+
+    text-align: center;
+}
+
+.footer-infor {
+    margin: 0 auto;
+}
+
+.footer-infor h5 {
+    margin: 10px 0px;
+
+    text-transform: uppercase;
+}
+
+.footer-infor h6 {
+    color: #8d8c8c;
+    font-size: 14px;
+    font-weight: 300;
+}
