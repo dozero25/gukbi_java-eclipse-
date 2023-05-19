@@ -1,0 +1,56 @@
+create database shop;
+use shop;
+
+-- 대분류 상품정보
+정규화 : 불필요한 데이터 공간의 낭비, 지금 당장 사용하지 않는 데이터 등등
+	   한 곳에 저장하고 사용하는 것
+
+분류
+- 인문 : 도둑맞은 집중력 16,920
+- 역사 : 썬킴의 겇미없는 중국사 16,920
+- 종교 : 법륜 스님의 반야심경 강의 필사공책 5,400
+
+create table bookCategory(
+	category_id int not null auto_increment,
+	book_category varchar(20),
+	primary key(category_id)
+);
+
+create table book(
+	book_id int not null auto_increment,
+	category_id int,
+	book_title varchar(100),
+	book_price int,
+	primary key(book_id)
+);
+
+insert into bookCategory values (0, '인문');
+insert into bookCategory values (0, '역사');
+insert into bookCategory values (0, '종교');
+
+insert into bookCategory values (0, '소설');
+insert into bookCategory values (0, '예술');
+insert into bookCategory values (0, '만화');
+
+
+insert into book values (0, 1, '도둑맞은 집중력', 16920);
+insert into book values (0, 2, '썬킴의 겇미없는 중국사', 16920);
+insert into book values (0, 3, '법륜 스님의 반야심경 강의 필사공책', 5400);
+
+insert into book values (0, 4, '돌연한 출발', 14400);
+insert into book values (0, 6, '화산귀환', 14400);
+insert into book values (0, 4, '블랙 쇼맨과 환상의 여자', 16200);
+insert into book values (0, 4, '언어의 무게', 16920);
+insert into book values (0, 6, '나 혼자만 레벨업', 31500);
+insert into book values (0, 5, '청양의 노래', 27000);
+
+
+// inner join
+select
+bi.book_id,
+bc.book_category,
+bi.book_title, 
+bi.book_price
+from
+book bi
+inner join bookCategory bc on(bc.category_id = bi.category_id);

@@ -10,8 +10,8 @@ public class DBConnect {
 	
 		public static Connection getConnection() {
 			try {
-				String url = "jdbc:mysql://localhost:3306/employees?charsetEncoding=UTF-8&serverTimezone=UTC";
-				String userId = "employees";
+				String url = "jdbc:mysql://localhost:3306/car?charsetEncoding=UTF-8&serverTimezone=UTC";
+				String userId = "root";
 				String userPw = "0000";
 				
 				conn = DriverManager.getConnection(url, userId, userPw);

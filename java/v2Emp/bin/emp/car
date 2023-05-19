@@ -1,0 +1,94 @@
+create database car;
+
+use car;
+
+create table carType(
+	type_id int not null auto_increment,
+	type_name varchar(20) not null,
+	primary key(type_id)
+);
+
+create table carPrice(
+	price_id int not null auto_increment,
+	type_id int not null,
+	car_price int not null,
+	primary key(price_id)
+);
+
+create table car(
+	car_id int not null auto_increment,
+	type_id int not null,
+	primary key(car_id)
+);
+
+insert into carType values (0, '벤츠');
+insert into carType values (0, '아우디');
+insert into carType values (0, '현대');
+insert into carType values (0, '기아');
+insert into carType values (0, '랜드로버');
+
+select * from carType;
+
+insert into carPrice values (0, 1, 5000);
+insert into carPrice values (0, 2, 4000);
+insert into carPrice values (0, 3, 3000);
+insert into carPrice values (0, 4, 2000);
+insert into carPrice values (0, 5, 1000);
+
+select * from carPrice;
+
+select
+ct.type_id,
+ct.type_name,
+cp.car_price
+from
+carType ct
+left outer join carPrice cp on(ct.type_id = cp.type_id);
+
+
+
+insert into car values (0, 1);
+insert into car values (0, 2);
+insert into car values (0, 4);
+insert into car values (0, 5);
+insert into car values (0, 3);
+insert into car values (0, 1);
+insert into car values (0, 2);
+insert into car values (0, 5);
+insert into car values (0, 4);
+insert into car values (0, 3);
+insert into car values (0, 1);
+insert into car values (0, 4);
+insert into car values (0, 2);
+
+select * from car;
+
+// carPrice에서 가격 불러오기
+select
+c.car_id,
+c.type_id,
+cp.car_price
+from
+car c
+left outer join carPrice cp on(c.type_id = cp.type_id);
+
+// 조인
+select
+c.car_id,
+ct.type_name,
+cp.car_price
+from
+car c
+left outer join carPrice cp on(c.type_id = cp.type_id)
+left outer join carType ct on(c.type_id = ct.type_id);
+
+// 마지막 행 출력
+select
+c.car_id,
+ct.type_name,
+cp.car_price
+from
+car c
+left outer join carPrice cp on(c.type_id = cp.type_id)
+left outer join carType ct on(c.type_id = ct.type_id)
+ORDER BY c.car_id DESC LIMIT 1 ;
