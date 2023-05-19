@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section h1 {
+            text-align: center;
+            padding: 25px 0px;
+            text-transform: uppercase;
+        }
+
+        .flex-wrap {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1400px;
+
+            margin: 0 auto;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .item {
+            flex-basis: 24%;
+        }
+
+        .content {
+            margin: 10px 0px;
+            text-align: justify;
+        }
+
+        @media screen and (max-width:800px) {
+            .flex-wrap {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                max-width: 1400px;
+
+                margin: 0 auto;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .item {
+                flex-basis: 49%;
+            }
+
+            .content {
+                margin: 10px 0px;
+                text-align: justify;
+            }
+
+        }
+
+        @media screen and (max-width:600px) {
+            .flex-wrap {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                max-width: 1400px;
+
+                margin: 0 auto;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .item {
+                flex-basis: 100%;
+            }
+
+            .content {
+                margin: 10px 0px;
+                text-align: justify;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Shop Mall Item List</h1>
+        <div class="flex-wrap">
+            <div class="item">
+                <img src="/exam/images/vase11.jpg" alt="">
+                <div class="content">
+                    <h3>Sale Vase $50.57</h3>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/exam/images/vase10.jpg" alt="">
+                <div class="content">
+                    <h3>Sale Vase $50.57</h3>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/exam/images/vase9.jpg" alt="">
+                <div class="content">
+                    <h3>Sale Vase $50.57</h3>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/exam/images/vase8.jpg" alt="">
+                <div class="content">
+                    <h3>Sale Vase $50.57</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Example</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .flex-wrap {
+            display: flex;
+
+            /* 반응형 처리할 때 화면이 즐어들면 내융물이 아래로 내려가게 하는 태그 */
+            flex-wrap: wrap;
+            /* 반응형 처리할 때 내용물을 감싸는 블록의 넓이 값을 설정 */
+            max-width: 100%;
+        }
+
+        .box {
+            font-weight: 700;
+            width: 25%;
+            height: 300px;
+        }
+
+        @media screen and (max-width:1000px) {
+            .box {
+                font-weight: 700;
+                width: 50%;
+                height: 300px;
+            }
+        }
+
+        @media screen and (max-width:500px) {
+            .box {
+                width : 100%
+            }
+        }
+        /*
+        3개일때 예시 -> 적절하게 계산해서 사용
+         .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            
+            max-width: 100%;
+        }fl
+
+        .box {
+            font-weight: 700;
+            width: 33.33333%;
+            height: 300px;
+        }
+
+        @media screen and (max-width:1000px) {
+            .box {
+                font-weight: 700;
+                width: 50%;
+                height: 300px;
+            }
+        }
+
+        @media screen and (max-width:500px) {
+            .box {
+                width : 100%
+            }
+        } */
+    </style>
+</head>
+<body>
+    <section>
+        <div class="flex-wrap">
+            <div class="box" style="background-color: #f00000;">box1</div>
+            <div class="box" style="background-color: #ff0;">box2</div>
+            <div class="box" style="background-color: #0f0;">box3</div>
+            <div class="box" style="background-color: #0f00f0;">box4</div>
+        </div>
+    </section>
+</body>
+</html>

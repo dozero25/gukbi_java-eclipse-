@@ -1,0 +1,23 @@
+@media screen and (max-width:600px) {
+    .flex-wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1400px;
+
+        margin: 0 auto;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .item {
+        flex-basis: 100%;
+    }
+
+    .content {
+        margin: 10px 0px;
+        text-align: justify;
+    } 
+}
