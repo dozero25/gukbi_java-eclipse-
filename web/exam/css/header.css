@@ -5,12 +5,14 @@ nav {
 }
 
 .nav-wrap {
-    width: 1200px;
+    max-width: 1200px;
     padding: 10px;
     margin: 0 auto;
 
     display: flex;
     justify-content: space-between;
+
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -52,7 +54,7 @@ nav {
     background-repeat: no-repeat;
     background-size: cover;
 
-    width: 100%;
+    max-width: 100%;
     height: 900px;
 
     margin: 0 auto;
@@ -111,4 +113,178 @@ nav {
     background-color: #000000;
     transform: translateY(-10%);
     transition: 0.5s;
+}
+
+@media screen and (max-width:1000px) {
+    nav {
+        width: 100%;
+        height: 80px;
+        border-bottom: 1px solid #f7f7f7;
+    }
+    .nav-wrap {
+        max-width: 100%;
+        padding: 10px;
+        margin: 0 auto;
+    
+        display: flex;
+        justify-content: space-between;
+    
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-family: 'Pacifico', cursive;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    
+    .menu ul li {
+        padding: 20px;
+    }
+    
+    .menu ul li a{
+        font-family: 'Lato', sans-serif;
+    
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+    
+        color: #8b8b8b;
+    }
+    
+    .menu ul li a.active {
+        color: #b10101;
+    }
+
+    .menu-img {
+        background-image: url('/exam/images/vase2-1080.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+        max-width: 100%;
+        height: 700px;
+    
+        margin: 0 auto;
+    
+        display: flex;
+        align-items: center;
+    }
+ 
+    .menu-text h1 {
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+    
+    .menu-text h6 {
+        font-size: 14px;
+        font-weight: 200;
+        color: #8b8b8b;
+    }
+    
+    .menu-btu {
+        width: 150px;
+        height: 45px;
+    
+        margin-top: 50px;
+    
+        background-color: #a80000;
+        border: 1px solid #a80000;
+    
+        font-size: 10px;
+        letter-spacing: 1px;
+    
+        color: #ffffff;
+    
+        text-transform: uppercase;
+    
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width:600px) {
+    nav {
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid #f7f7f7;
+    }
+    .nav-wrap {
+        max-width: 100%;
+        padding: 10px;
+        margin: 0 auto;
+    
+        display: flex;
+        justify-content: space-between;
+    
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-family: 'Pacifico', cursive;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .menu ul li {
+        padding: 20px;
+    }
+    
+    .menu ul li a{
+        font-family: 'Lato', sans-serif;
+    
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 3px;
+    
+        color: #8b8b8b;
+    }
+    
+    .menu ul li a.active {
+        color: #b10101;
+    }
+
+    .menu-img {
+        background-image: url('/exam/images/vase2-1080.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+        max-width: 100%;
+        height: 700px;
+    
+        margin: 0 auto;
+    
+        display: flex;
+        align-items: center;
+    }
+ 
+    .menu-text h1 {
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+    
+    .menu-text h6 {
+        font-size: 14px;
+        font-weight: 200;
+        color: #8b8b8b;
+    }
+    
+    .menu-btu {
+        width: 150px;
+        height: 45px;
+    
+        margin-top: 50px;
+    
+        background-color: #a80000;
+        border: 1px solid #a80000;
+    
+        font-size: 10px;
+        letter-spacing: 1px;
+    
+        color: #ffffff;
+    
+        text-transform: uppercase;
+    
+        cursor: pointer;
+    }
 }

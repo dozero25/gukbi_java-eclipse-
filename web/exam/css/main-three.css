@@ -5,6 +5,8 @@
     margin-top: 90px;
     display: flex;
     justify-content: center;
+
+    flex-wrap: wrap;
 }
 
 .inner-title {
@@ -81,3 +83,6 @@
 .three-btn {
     text-align: center;
 }
+
+
+
