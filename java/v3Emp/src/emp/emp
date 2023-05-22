@@ -1,0 +1,27 @@
+use employees;
+
+create table emp(
+emp_id int not null auto_increment,
+emp_pwd varchar(20),
+emp_department_code int,
+primary key(emp_id)
+);
+
+desc emp;
+
+create table empDepartment(
+emp_department_code int not null auto_increment,
+emp_department_name varchar(20) not null,
+primary key(emp_department_code)
+);
+
+desc empDepartment;
+
+INSERT INTO empDepartment VALUES (0, '인사과');
+INSERT INTO empDepartment VALUES (0, '자재과');
+INSERT INTO empDepartment VALUES (0, '영업부');
+INSERT INTO empDepartment VALUES (0, '비서실');
+INSERT INTO empDepartment VALUES (0, '총무과');
+INSERT INTO empDepartment VALUES (0, '감사팀');
+
+SELECT * FROM empDepartment ORDER BY emp_department_code DESC;
