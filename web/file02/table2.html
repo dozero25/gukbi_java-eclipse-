@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+
+    <style>
+        .table-warp {
+            width: 80%;
+            margin: 0 auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+
+            text-align: center;
+        }
+        tr {
+            height: 80px;
+            
+        }
+        thead tr:nth-child(1) {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        td {
+            border: 1px solid #dbdbdb;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f3f3f3;
+        }
+        tbody tr:last-child{
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-warp">
+        <table>
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Order ID</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">2023-05-22</td>
+                    <td>korea1</td>
+                    <td>코코</td>
+                    <td>500000</td>
+                    <td>1</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>korea1</td>
+                    <td>코코</td>
+                    <td>500000</td>
+                    <td>1</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>korea1</td>
+                    <td>코코</td>
+                    <td>500000</td>
+                    <td>1</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td colspan="3"> 합계</td>
+                    <td>1500000</td>
+                    <td>3</td>
+                    <td>6000</td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+</body>
+</html>
