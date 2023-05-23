@@ -14,6 +14,7 @@ public class DBConnect {
 			String pwd = "0000";
 			
 			conn = DriverManager.getConnection(url, user, pwd);
+			System.out.println("연결");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
