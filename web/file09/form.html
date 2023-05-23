@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 태그 : 데이터를 전송해서 저장할 때</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* div를 가로세로 가운데 정렬 */
+        .box {
+            position: absolute;
+            top: 50%;
+            left : 50%;
+            transform: translate(-50%, -50%);
+
+            /* 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 900px; */
+
+            background-color: #ffffff;
+            box-shadow: 0px 1px 1px 1px #dbdbdb;
+
+            padding: 30px 20px;
+
+            width: 500px;
+        }
+
+        ::placeholder {
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+
+            border: 1px solid #dbdbdb;
+
+            padding: 10px 5px;
+            margin-bottom: 10px;
+
+            outline: 0;
+        }
+        input[type="file"] {
+            border: 0;
+        }
+
+        .btn-wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        .register-btn {
+            width: 100px;
+            height: 50px;
+            
+            background-color: #dbdbdb;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background-color: #afafaf;
+            border: 1px solid #afafaf;
+        }
+
+        textarea {
+            width: 100%;
+            border:  1px solid #dbdbdb;
+            padding: 10px;
+        }
+        textarea:hover {
+            border: 1px solid #f00000;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    중요 : post(보안, 글자길이 제한x) 검색어 : get(속도 빠름, 글자길이 제한)
+    전송방식 : method = "get(post)" encType, action name id class
+    <form action="post" enctype="multipart/form-data" action="save.html" name="" class="" id="">
+        label : 제목
+        input : text, password, checkbox, radil, submit, file...
+        select : 선택박스
+        texttarea : 대량의 텍스트
+        버튼 : <input=submit value=로그인>, <button type="submit"></button>
+    </form> -->
+    
+    <div class="box">
+        <form action="post" enctype="multipart/form-data" action="저장할 주소">
+
+            <input type="hidden" name="" id="" class="" value="숨겨서 사용할 값">
+
+            <!-- 
+            <label>상품수량</label>
+            <input type="number" name ="cnt" value="1" max="10" min="0">
+            <label>성별</label>
+            
+            <label>
+                <label><input type="radio" name="gender" value="M"> 남자</label>
+                <label><input type="radio" name="gender" value="W"> 여자</label>
+            </label>
+
+            
+            <input type="checkbox" class="" id="" value="climbing"> 등산
+            <input type="checkbox" class="" id="" value="reading"> 독서
+            <input type="checkbox" class="" id="" value="fishing"> 낚시 -->
+
+            <label>Intro</label>
+            <textarea name="intro" id="" class=""></textarea>
+
+            <label>UserId.</label>
+            <input type="text" autofocus required autocomplete="off" name="UserId" class="" id="" placeholder="아이디 입력"><br>
+            <!-- autocomplete="off" 아이디 입력하고 밑에 사용했던 아이디 남기는 거 지우기 -->
+            <label>UserName.</label>
+            <input type="text" required autocomplete="off" name="UserName" class="" id="" placeholder="이름 입력"><br>
+            <label>UserPassword.</label>
+            <input type="password" required name="UserPassword" class="" id="" placeholder="비밀번호 입력"><br>
+    
+            <input type="file" name="upload" class="" id="" ><br>
+            <!-- <input type="submit" class="" id="" value="회원가입"> -->
+
+            <!-- 지역선택 -->
+            <select name="" id="">
+                <option value="seoul">서울특별시</option>
+                <option value="busan">부산광역시</option>
+            </select>
+
+            <!-- 제조사 -->
+            <select name="" id="">
+                <option value="Hyundai">현대차</option>
+                <option value="Kia">기아차</option>
+            </select>
+
+
+            <div class="btn-wrap">
+                <button type="submit" class="register-btn" id="">Register</button>
+                <button type="reset" class="register-btn" id="">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
