@@ -20,6 +20,7 @@ public class Test01 {
 			System.out.println(total);
 		}
 		System.out.println(total);
+		
 	}
 
 }
