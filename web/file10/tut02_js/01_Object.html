@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Array [ {Object1}, {Object2}, {Object3}, ... ]
+        // Object : 객체(많은 데이터, 타입이 다른 데이터 처리)
+        // let object : {변수명 : 값}
+        //               key   : value
+        // 객체형 데이터베이스 : MongoDB
+        // Json : 웹에서 사용하는 (객체) 데이터 전송 방식
+        // 자바스크립트 객체 : Json 객체
+
+        let obj1 = {
+            id : 1,
+            username : "코리아아이티",
+            passwd : "1234",
+            isRegister : true,
+            regdate : '2023-06-01'
+        };
+
+        let arr1 = [
+            {id :1, username: "korea"},
+            {id :2, username: "seoul"},
+            {id :3, username: "daegu"}
+        ];
+
+        let members = [
+            {id :1, username: "korea"},
+            {id :2, username: "seoul"},
+            {id :3, username: "daegu"}
+        ];
+
+        console.log(obj1);
+        console.log(arr1);
+        console.log(members[1]);
+        console.log(members[1].id);
+        console.log(members[1].username);
+        
+        // 배열명.foreach();
+        members.forEach( name => {
+            console.log(name.username);
+        });
+
+        members.forEach( m => {
+            console.log(m.id);
+        });
+
+        members.forEach( m => {
+            console.log(`아이디 : ${m.id} / 이름 : ${m.username}`);
+        });
+
+    </script>
+</body>
+</html>
