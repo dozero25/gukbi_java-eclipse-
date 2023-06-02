@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" class="cli-btn1">Click</button>
+    <button type="button" class="cli-btn2">Click</button>
+
+    <script>
+        // click Event 처리 : 함수분리, function 함수, 화살표 함수
+        // 동작 + 클릭이벤트
+
+        function cliButton(){
+            const clibtn = document.querySelector(".cli-btn1");
+
+            clibtn.onclick = () => {
+                alert("버튼 클릭함");
+                location.href = "https://www.naver.com";
+            }
+        }
+
+        cliButton();
+
+        function cliBtnEvent(e){
+            e.preventDefault();
+            alert("버튼 클릭함");
+                location.href = "https://www.naver.com";
+        }
+
+        const clibtn = document.querySelector(".cli-btn2");
+
+        clibtn.addEventListener('click', cliBtnEvent);
+
+    </script>
+</body>
+</html>

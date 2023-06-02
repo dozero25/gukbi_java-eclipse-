@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 객체 : let 이름 = {}
+        // 배열 : let 이름 = [{객체1}, {객체2}]
+
+        let member = {
+            id : 1,
+            userid : 'koreait',
+            passwd : '1234'
+        };
+        console.log("객체 출력");
+        console.log(member.id);
+        
+       
+        for(m in member) {
+            // console.log(member["userid"]);
+            // 키 - 값 출력
+
+            console.log(`${m} - ${member[m]}`);
+        }
+
+        let members = [
+            {
+                id : 1,
+                userid : 'Busan',
+                passwd : '124124'
+            },
+            {
+                id : 2,
+                userid : 'it',
+                passwd : '123'
+            },
+            {
+                id : 3,
+                userid : 'zero',
+                passwd : '0000'
+            }
+        ];
+
+        // 자바스크립트 객체
+        console.log(members);
+        // 자바스크립트 -> JSON.stringify(배열명) -> 데이터 전송 -> 수신 : JSON.parse(배열명)
+        console.log(JSON.stringify(members));
+
+        members.forEach((m) => {
+            console.log(m);
+        });
+
+        members.forEach((m, key) => {
+            console.log(`${key} -> ${m.userid}`)
+        });
+    </script>
+</body>
+</html>
