@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 비동기 처리 확인할 때 사용하거나 규칙적인 시간에 따라 함수를 실행시켜야 할 경우
+        
+        // setInterval(함수, 시간); 1000 = 1초
+
+        // function welcome(){
+        //     console.log("Hello, wellcome!");
+        // }
+
+        // setInterval(welcome, 5000);
+
+        // function hello(){
+        //     console.log("hi");
+        // }
+        
+        // let result = setInterval(hello, 2000);
+        // clearInterval(result);
+
+        // 함수를 만들어서 3 초 후 실행하는 프로그램 : setTimeout();
+
+        function stopWatch(){
+            setTimeout(function () {
+            console.log("Hello world");
+            }, 3000);
+        }
+
+        function stopWatch2(){
+            setTimeout( () => {
+                console.log("hi");
+            }, 5000);
+        }
+
+        stopWatch();
+        stopWatch2();
+
+    </script>
+</body>
+</html>

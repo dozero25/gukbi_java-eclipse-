@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 이어 붙이기
+        // 2. 정확한 개수를 모를때
+
+        // 2수의 합계
+        // 동작
+        let sum = function(num1, num2){
+            return num1 + num2;
+        }
+        // 출력
+        console.log(sum(10,20));
+
+        // 정확한 개수를 모를 때 : 매개변수 개수는 상관없이 더하기
+        let add = function (...values) {
+            let total = 0;
+            for(let i = 0; i < values.length; i++) {
+                total += values[i];
+            }
+            return total;
+        }
+
+        console.log(add(100,200));
+        console.log(add(100,200,300));
+
+        let cals = (...nums) => {
+            let total = 1;
+            // for(let i =0; i <nums.length; i++) {
+            //     total *= nums[i];
+            // }
+            // return total;
+
+            // for(타입 별명 of 배열명) { 출력코드 }
+            for(let num of nums) {
+                total += num;
+            }
+            return total-1;
+        }
+
+        console.log(cals(5,10));
+        console.log(cals(5,10, 25));
+
+    </script>
+</body>
+</html>
