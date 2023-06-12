@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 만들기</title>
+    <style>
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav3 {
+            background-color: #000000;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        /* 가로배치 */
+        /* ul li {
+            float: left;
+            margin: 0px 20px;
+        } */
+
+        ul  {
+            display: flex;
+            justify-content: center;
+            padding: 25px 0px;
+        }
+
+        ul li:nth-child(2) {
+            margin: 0px 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav3">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Content</a></li>
+        </ul>
+    </nav>
+    
+</body>
+</html>

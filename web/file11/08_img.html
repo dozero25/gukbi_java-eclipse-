@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 속성</title>
+    <style>
+        /* 내부스타일 : 같은 조건일 때는 inline 타입이 우선*/
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- inline 스타일로 크기 조정
+    내부스타일로 크기 -->
+
+    <!-- 
+    절대경로 : 하드디스크 c:\ d:\
+    상대경로 : 폴더 이름 => 폴더이름 or, ./폴더이름 현재경로
+                        ../폴더이름 : 한 단계 위에서 찾기
+                        ../../폴더이름 : 두 단계 위에서 찾기
+    -->
+    <!-- 인라인 스타일 -->
+    <a href="경로" target="_blank">
+        <img src="경로" 
+            style="width: 800px;"
+            alt="이미지가 보이지 않을 때 나타나는 글씨">
+    </a>
+</body>
+</html>

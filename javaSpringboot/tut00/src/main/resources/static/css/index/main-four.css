@@ -1,0 +1,70 @@
+.main-four {
+    margin-top: 60px;
+}
+.four-img {
+    background-image: url('/static/images/platebackground.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.four-container {
+    width: 50%;
+    margin: 400px;
+    text-align: left;
+}
+
+.four-text {
+    width: 500px;
+    height: 300px;
+}
+
+.four-text h5 {
+    letter-spacing: 3px;
+    color: #f00000;
+}
+
+.four-text h1 {
+    font-size: 45px;
+    letter-spacing: 4px;
+}
+
+.four-text h6 {
+    font-size: 16px;
+    font-weight: 200;
+    color: #8b8b8b;
+}
+
+.four-btu {
+    width: 200px;
+    height: 60px;
+
+    margin-top: 50px;
+
+    background-color: #a80000;
+    border: 1px solid #a80000;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.four-btu:hover {
+    border: 1px solid #000000;
+    background-color: #000000;
+    transform: translateY(-10%);
+    transition: 0.5s;
+}

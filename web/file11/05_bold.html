@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        부분 굵게 => html => strong, b
+        전체 굵게 => css => font-weight  */
+        p:nth-child(2) {
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        p:nth-child(3) span {
+            font-weight: 600;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <p>코리아 <strong>아이티</strong> 아카데미입니다.</P>
+    <p>코리아 아이티 아카데미입니다.</P>
+    <p>코리아 <span>아이티</span> 아카데미입니다.</P>
+</body>
+</html>

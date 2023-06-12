@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/css/user/login.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    </style>
+    <title>Korea it groupsystem Loign Page</title>
+</head>
+<body>
+<div class="login-box">
+    <div class="login-logo">
+        <div>
+            <h1><i class="fa-solid fa-graduation-cap"></i>KOREA</h1>
+            <h5>EDUCATION GROUP</h5>
+        </div>
+    </div>
+    <form action="/account/login" method="post" class="login-input-box">
+        <input type="text" class="login-id" id="userid" name="userid" placeholder="아이디"><br>
+        <input type="password" class="login-pw" id="passwd" name="passwd" placeholder="비밀번호"><br>
+        <span class="login-check"><input type="checkbox" class="" name="" id="login-check1"> ID 저장</span>
+        <span class="login-check"><input type="checkbox" class="" name="" id="login-check2"> 비밀번호 저장</span>
+        <br>
+        <button type="submit" class="login-btn">로그인</button>
+    </form>
+    <div class="login-explain">
+        <p class="login-ep">
+            코리아교육그룹 통합 인트라넷 사이트입니다. <br>
+            발급 받으신 계정으로 로그인 후 이용이 가능합니다.
+            <br><br>
+            <span class="text-color">인트라넷</span> 관련문의 본사 컨텐츠 기획분수 02)3471-0531
+        </p>
+    </div>
+    <div class="bottom-exp">
+        copyright<i class="fa-regular fa-copyright"></i>2017 KOREA EDU GROUP.All right reserved.
+    </div>
+</div>
+<script>
+    const userid = document.querySelector(".login-id");
+    const passwd = document.querySelector(".login-pw");
+    const log = document.querySelector(".login-btn");
+    
+    function loginClick(){
+        
+        log.onclick = () => {
+            if(userid.value == "") {
+                alert("아이디를 입력해주세요.");
+                userid.focus();
+                return false;
+            }
+
+            if(userid.value.length > 12) {
+                alert("아이디는 12자리 이하로 입력하세요.");
+                userid.value = "";
+                userid.focus();
+                return false;
+            }
+
+            if(passwd.value == "") {
+                alert("비밀번호를 입력해주세요.");
+                passwd.focus();
+                return false;
+            }
+        }
+    }
+        
+    loginClick();
+    
+</script>
+</body>
+</html>

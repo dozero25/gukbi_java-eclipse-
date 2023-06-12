@@ -1,0 +1,50 @@
+@charset 'utf-8';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+ul li {
+    list-style: none;
+}
+
+header {
+    width: 100%;
+    height: 900px;
+}
+
+main {
+    width: 100%;
+}
+
+footer {
+    width: 100%;
+    height: 600px;
+    background-color: #fafafa;
+
+    border-top: 1px solid #dbdbdb;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.container {
+    margin: 0 auto;
+
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+

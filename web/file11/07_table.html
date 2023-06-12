@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 예제</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead tr, tbody tr {
+            height: 50px;
+        }
+
+        td, th {
+            border: 1px solid #dbdbdb;
+        }
+
+        thead {
+            background-color: #7e7e7e;
+        }
+        .pagination {
+            padding: 10px 0px;
+            text-align: center;
+        }
+
+        .search-wrap {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-wrap">
+        <form method="post" action="">
+            <input type="text"><button>검색</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>게시판 디자인 테스트</td>
+                <td>관리자</td>
+                <td>2023.06.12</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>게시판 디자인 테스트</td>
+                <td>관리자</td>
+                <td>2023.06.12</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>게시판 디자인 테스트</td>
+                <td>관리자</td>
+                <td>2023.06.12</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+        <!-- <tfooter>
+            <tr>
+                <td colspan="5">
+                    <span>
+                        prev
+                    </span>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>next</span>
+                </td>
+            </tr>
+        </tfooter> -->
+    </table>
+    <div class="pagination">
+        <span>prev</span>
+        <span>1</span>
+        <span>2</span>
+        <span>next</span>
+    </div>
+</body>
+</html> 

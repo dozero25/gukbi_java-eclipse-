@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* hr -> reset 후 디자인 */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        article {
+            padding: 50px 0px;
+        }
+
+        article:nth-child(odd) {
+            /* odd : 홀수, even : 짝수 */
+            background-color: #dbdbdb;
+        }
+    </style>
+</head>
+<body>
+    <!-- 본문 전체 -->
+    <section>
+        <article class="art1">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum fugiat non soluta? Porro quas illo harum quisquam blanditiis eaque facere?</p>
+        </article>
+        <article class="art2">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum fugiat non soluta? Porro quas illo harum quisquam blanditiis eaque facere?</p>
+        </article>
+        <article class="art1">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum fugiat non soluta? Porro quas illo harum quisquam blanditiis eaque facere?</p>
+        </article>
+        <article class="art2">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum fugiat non soluta? Porro quas illo harum quisquam blanditiis eaque facere?</p>
+        </article>
+    </section>
+</body>
+</html>
