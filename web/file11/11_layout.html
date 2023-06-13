@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3단 레이아웃</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0px;
+
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        section {
+            display: flex;
+        }
+
+        .section-left {
+            flex-basis: 15%;
+            background-color: #ffffff;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 0 5px 4px #e7e7e7;
+            height: calc(100vh - 90px);
+            /* vh : 브라우저 높이를 가득 채우지만 header 부분을 빼 줘야 정확한 화면 높이 */
+        }
+
+        .section-right {
+            flex-basis: 85%;
+            background-color: #ffffff;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 0 5px 4px #e7e7e7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Logo</h3>
+        <div class="userindo">mail@mail.com - logout</div>
+        <div class="menu">
+            <span>메뉴1</span>
+            <span>메뉴2</span>
+            <span>메뉴3</span>
+        </div>
+    </header>
+    <section>
+        <article class="section-left">왼쪽 메뉴</article>
+        <article class="section-right">본문 내용</article>
+    </section>
+</body>
+</html>

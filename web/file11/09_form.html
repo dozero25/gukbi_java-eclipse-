@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 예제 + js</title>
+    <style>
+        form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 디비 저장할 때는 submit() -->
+    <form action="/register" method="post" enctype="multipart/form-data" name="frm" onsubmit="return frmCheck()">
+        <label>Email</label>
+        <input type="email" name="korEmpEmail" class="">
+
+        <label>Password</label>
+        <input type="password" name="korEmpPw1" class="">
+
+        <label>Re-Password</label>
+        <input type="password" name="korEmpPw2" class="">
+
+        <div class="btn-wrap">
+            <button type="submit">Register</button>
+        </div>
+
+    </form>
+    <script>
+        let email = document.querySelector("input[type='email']");
+        let passwd = document.querySelector("input[name='korEmpPw1']");
+        let repasswd = document.querySelector("input[name='korEmpPw2']");
+
+        let btn = document.querySelector("input[type='submit']");
+
+        function frmCheck(){
+            if(!email.value) {
+                alert("이메일을 입력해주세요.");
+                email.focus();
+                return false;
+            }
+
+            if(email.value.length > 50) {
+                alert("이메일 주소가 너무 깁니다. \n다시 입력해주세요");
+                email.value = "";
+                email.focus();
+                return false;
+            }
+
+            if(!passwd.value) {
+                alert("비밀번호를 입력하세요.");
+                passwd.focus();
+                return false;
+            }
+
+            if(!repasswd.value) {
+                alert("비밀번호를 입력하세요.");
+                repasswd.focus();
+                return false;
+            }
+
+            if(repasswd.value != passwd.value) {
+                alert("비밀번호가 일치하지 않습니다.");
+                passwd.value = "";
+                repasswd.value = "";
+                passwd.focus();
+                return false;
+            }
+            document.frm.submit();
+        }
+    </script>
+</body>
+</html>

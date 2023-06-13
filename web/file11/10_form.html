@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+</head>
+<body>
+    <form action="/register" method="post">
+        <label>Email</label>
+        <input type="email" name="korEmpEmail" class="email"><br>
+
+        <label>Password</label>
+        <input type="password" name="korEmpPw1" class="pw1"><br>
+
+        <label>Re-Password</label>
+        <input type="password" class="pw2"><br>
+
+        <div class="btn-wrap">
+            <button type="submit" class="btn">Register</button>
+        </div>
+    </form>
+    
+    <script>
+        const email = document.querySelector(".email");
+        const pw = document.querySelector(".pw1");
+        const rePw = document.querySelector(".pw2");
+
+        const btn = document.querySelector(".btn");
+
+        function btnCheck(){
+            if(email.value == "") {
+                alert("이메일을 입력해주세요.");
+                email.focus();
+                return;
+            }
+
+            if(email.value.trim.length > 20) {
+                alert("이메일 주소가 너무 깁니다. \n다시 입력해주세요");
+                email.value = "";
+                email.focus();
+                return;
+            }
+
+            if(pw.value == "") {
+                alert("비밀번호를 입력하세요.");
+                pw.focus();
+                return;
+            }
+
+            if(rePw.value == "") {
+                alert("비밀번호를 입력하세요.");
+                rePw.focus();
+                return;
+            }
+
+            if(rePw.value != pw.value) {
+                alert("비밀번호가 일치하지 않습니다.");
+                pw.value = "";
+                rePw.value = "";
+                pw.focus();
+                return;
+            }
+            
+        }
+
+        btn.addEventListener('click', btnCheck);
+    </script>
+</body>
+</html>
