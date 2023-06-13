@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/table.css">
+    <title>[[${getTitle}]]</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'); 
+    </style>
+</head>
+<body>
+    <header>
+        <h3 class="top-left">Logo</h3>
+        <div class="top-right">
+            <div class="userinfo">로그인 정보</div>
+            <div class="menu">메뉴</div>
+            <div class="icons"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+    <section>
+        <article class="section-left">왼쪽</article>
+        <article class="section-right">
+            <h2 class="table-title">[[${tableTitle}]]</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>Name.</th>
+                        <th>Grade.</th>
+                        <th>Dept.</th>
+                        <th>Position.</th>
+                        <th>Created.</th>
+                        <th>Remarks.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>mail@gmail.com</td>
+                        <td>###</td>
+                        <td>Level 8</td>
+                        <td>HRD</td>
+                        <td>TEAM</td>
+                        <td>2023.06.13</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </article>
+    </section>
+</body>
+</html>
