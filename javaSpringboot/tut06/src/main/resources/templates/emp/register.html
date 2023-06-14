@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>사원 등록 페이지</title>
+</head>
+
+<body>
+
+    <a href="/employee/list">사원목록 보기</a>
+
+    <form method="post" action="/employee/register" name="frm">
+
+        <label>부서</label>
+        <select class="sel" name="dept">
+
+        </select><br>
+
+        <label>이메일</label>
+        <input type="text" name="email" class="umail"><br>
+
+        <label>비밀번호</label>
+        <input type="password" name="passwd" class="upwd"><br>
+
+        <input type="submit" value="사원등록" class="btn">
+    </form>
+
+    <script>
+        window.onload = () => {
+            ServiceApi.getInstance().categoryList();
+            ServiceApi.getInstance().frmCheck();
+        }
+
+
+        // jquery 문법 시작 : $()
+        // xhr.onload = function(){} : 페이지 로딩 되면 부서를 select 가져오기
+
+
+        class ServiceApi {
+            static #instance = null;
+            static getInstance() {
+                if (this.#instance == null) {
+                    this.#instance = new ServiceApi();
+                }
+                return this.#instance;
+            }
+
+            categoryList() {
+                let sel = document.querySelector(".sel");
+
+                $.ajax({
+                    type: "get",
+                    url: "/employee/category/dept",
+                    dataType: "json",
+                    success: data => {
+
+                        let output = "";
+
+                        data.forEach((d) => {
+                            output += `<option value=${d.korBuseoCode}>${d.korBuseoName}</option>`;
+                        });
+
+                        sel.innerHTML = output;
+                    },
+                    error: data => {
+                        console.log(error);
+                    }
+                });
+            }
+
+            frmCheck() {
+                let umail = document.querySelector(".umail");
+                let upwd = document.querySelector(".upwd");
+
+                let btn = document.querySelector(".btn");
+
+                btn.onclick = () => {
+                    if (umail.value == "") {
+                        alert("이메일 주소를 입력해주세요");
+                        umail.focus();
+                        return false;
+                    }
+
+                    if (upwd.value == "") {
+                        alert("비밀번호를 입력해주세요");
+                        upwd.focus();
+                        return false;
+                    }
+                }
+            }
+        };
+
+
+
+    </script>
+</body>
+
+</html>

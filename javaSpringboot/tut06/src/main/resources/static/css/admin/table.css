@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background-color: #0b8ed7;
+    color: #ffffff;
+    height: 45px;
+    border: 1px solid #ffffff;
+}
+
+thead th {
+    border: 1px solid #dbdbdb;
+}
+
+tbody tr {
+    height: 45px;
+    text-align: center;
+}
+
+tbody td {
+    border: 1px solid #dbdbdb;
+}
+
+tbody tr td:nth-child(1) { width: 5%; }
+tbody tr td:nth-child(2) { width: 35%; }
+tbody tr td:nth-child(3) { width: 25%; }
+tbody tr td:nth-child(4) { width: 25%; }
+tbody tr td:nth-child(4) { width: 10%; }
+

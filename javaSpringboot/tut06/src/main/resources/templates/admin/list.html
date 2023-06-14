@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/list.css">
+    <link rel="stylesheet" href="/css/admin/table.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>[[${title}]]</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    </style>
+</head>
+
+<body>
+    <header>
+        <h3 class="top-left">Logo</h3>
+        <div class="top-right">
+            <div class="userinfo">로그인 정보</div>
+            <div class="menu">메뉴</div>
+            <div class="icons"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+    <section>
+        <article class="section-left">왼쪽</article>
+        <article class="section-right">
+            <h2 class="table-title">사원 등록 페이지</h2>
+            <table class="list-table">
+                <thead>
+                    <tr>
+                        <th>선택</th>
+                        <th>부서</th>
+                        <th>이메일</th>
+                        <th>비밀번호</th>
+                        <th>수정 / 삭제</th>
+                    </tr>
+                </thead>
+                
+            </table>
+            <a href="/employee/register">사원등록</a>
+        </article>
+    </section>
+    <script>
+        window.onload = () => {
+            ServiceApi.getInstance().getListInfo();
+            ServiceApi.getInstance().deleteListBtn();
+        }
+
+        class ServiceApi {
+                static #instance = null;
+                static getInstance() {
+                    if (this.#instance == null) {
+                        this.#instance = new ServiceApi();
+                    }
+                    return this.#instance;
+                }
+
+                getListInfo() {
+                    const table = document.querySelector(".list-table");
+
+                    $.ajax({
+                        type: "get",
+                        url: "/employee/list/load",
+                        dataType: "json",
+                        success : response => {
+                            response.forEach((data) => {
+                            table.innerHTML += `
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="check-delete"></td>
+                                    <td>${data.dept}</td>
+                                    <td>${data.email}</td>
+                                    <td>${data.passwd}</td>
+                                    <td>
+                                        <button>수정</button>
+                                        <button class = "delete-btn">삭제</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            `;
+                            });
+                        },
+                        error : response => {
+                            console.log(error);
+                        }
+                    });
+                }
+
+                deleteList(deleteArray){
+                    let returnFlage = false;
+                    $.ajax({
+                        async:"false",
+                        type: "delete",
+                        url:"/employee/delete",
+                        dataType: "json",
+                        success : response => {
+                            console.log(response);
+                            returnFlage = true;
+                        },
+                        error : response => {
+                            console.log(error);
+                        }
+                    });
+                    return returnFlage;
+                }
+
+                deleteListBtn(){
+                    const delBtn = document.querySelector(".delete-btn");
+                    const delData = ServiceApi.getInstance().deleteList();
+                    
+
+                }
+        
+            }
+         
+                
+    </script>
+</body>
+
+</html>
