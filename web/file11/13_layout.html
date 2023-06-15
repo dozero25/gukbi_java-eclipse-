@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fileupload + select(option)</title>
+</head>
+<body>
+    <form action="/employee/upload" enctype="multipart/form-data">
+        <label>첨부파일</label>
+        <input type="file" name="upload"><br>
+        
+        <label>다중 파일 업로드</label>
+        <input type="file" name="uploads" multiple>
+
+        <label>부서명</label>
+        <select name="sel">
+            <option value="100">인사과</option>
+            <option value="200">자재과</option>
+            <option value="300">영업부</option>
+            <option value="900" selected>임원실</option>
+        </select>
+    </form>
+</body>
+</html>
