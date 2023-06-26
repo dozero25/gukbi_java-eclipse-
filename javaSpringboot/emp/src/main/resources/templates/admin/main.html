@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>관리자 Index Page</title>
+</head>
+<body>
+
+    <nav th:insert="~{fragment/inc::sessionInfo}"></nav>
+
+
+    <a href="/emp/list">사원 전체 목록 페이지</a>
+
+    <footer th:insert="~{fragment/footer::footerCopyright}"></footer>
+
+</body>
+</html>

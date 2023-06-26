@@ -45,7 +45,8 @@
     <script>
         window.onload = () => {
             ServiceApi.getInstance().getListInfo();
-            ServiceApi.getInstance().deleteListBtn();
+            ServiceApi.getInstance().checkListDelBtn();
+
         }
 
         class ServiceApi {
@@ -88,8 +89,9 @@
                     });
                 }
 
-                deleteList(deleteArray){
+                deleteList(){
                     let returnFlage = false;
+
                     $.ajax({
                         async:"false",
                         type: "delete",
@@ -106,11 +108,32 @@
                     return returnFlage;
                 }
 
-                deleteListBtn(){
-                    const delBtn = document.querySelector(".delete-btn");
-                    const delData = ServiceApi.getInstance().deleteList();
+                checkListDelBtn(){
+                    const checkDel = document.querySelectorAll(".check-delete");
+                    const table = document.querySelector(".list-table");
+                    const delBtn = document.querySelectorAll("delete-btn");
+                    const delList = ServiceApi.getInstance().deleteList();
+
+                    delBtn.onclick= () => {
+                        delList();
+                            table.outerHTML = `
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="check-delete"></td>
+                                    <td>${data.dept}</td>
+                                    <td>${data.email}</td>
+                                    <td>${data.passwd}</td>
+                                    <td>
+                                        <button>수정</button>
+                                        <button class = "delete-btn">삭제</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            `;
+                        }
                     
 
+                    
                 }
         
             }

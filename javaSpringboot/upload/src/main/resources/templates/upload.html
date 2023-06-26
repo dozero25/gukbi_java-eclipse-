@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>파일업로드</title>
+</head>
+<body>
+    <form id="upload-form">
+        <label>이미지 업로드</label>
+        <input type="file" name="uploadFile" required>
+        <button onclick="frmUpload()">업로드</button>
+    </form>
+
+    <script>
+        function frmUpload(){
+
+            let frmData = new FormData($("#upload-form")[0]);
+
+            $.ajax({
+                type: "post",
+                url : "/upload",
+                encType: "multipart/form-data",
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: frmData,
+                success: function(){
+                },
+                error: function(error){
+                    console.log(error);
+                }
+
+            });
+        }
+    </script>
+</body>
+</html>

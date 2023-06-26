@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 150px 0px;
+        }
+
+        img {
+            width: 400px;
+            height: 300px;
+        }
+
+        section{
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .one {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            
+        }
+
+        .one h1 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .one p {
+            text-align: justify;
+            line-height: 1.5;
+            color: rgba(0,0,0,0.5);
+            font-size: 16px;
+        }
+
+        .one article {
+            flex-basis: 48%;
+
+        }
+        
+        article img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content  {
+            display: flex;
+            /* 사진 합계 사이즈가 브라우저보다 커지면 줄 바꿈 */
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            gap: 0.25%
+        }
+
+        .title {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .box {
+            flex-basis: 24.75%;
+        }
+
+        .box img {
+            width: 100%;
+        }
+
+        footer {
+            max-width:100%;
+            text-align: center;
+        }
+
+        @media screen and (max-width : 1200px) {
+            .one article {
+                flex-basis: 100%;
+            }
+
+            .box {
+            flex-basis: 49.3%;
+            }
+
+
+        }
+
+        @media screen and (max-width : 700px) {
+            .box {
+                flex-basis: 100%;
+            } 
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="one">
+            <article>
+                <h1>KOREAIT ACADEMY</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus et, eos officia, atque ab soluta delectus sunt quis accusamus blanditiis eligendi! Ab distinctio consequatur ipsam aspernatur nostrum fugit perferendis debitis corrupti nobis libero, soluta iusto. Quisquam cupiditate accusantium necessitatibus maxime quasi provident assumenda, voluptates minima enim ad beatae laborum vitae! Accusamus exercitationem odio, omnis nulla beatae sed incidunt explicabo vel doloremque at minus adipisci? Saepe sit porro rerum minus eaque quasi dolor deserunt, esse eos possimus, aliquid ullam similique doloribus architecto suscipit, est provident fuga ratione culpa itaque hic neque ipsum? Cum sequi suscipit nisi soluta molestiae nam laudantium architecto minus, eos laborum, dolorum error, id praesentium doloribus? Necessitatibus architecto velit cumque laborum minus minima eligendi esse soluta ducimus. Corrupti, eligendi modi sapiente voluptate reprehenderit odio impedit accusamus dolor dicta dignissimos pariatur velit alias quaerat nostrum delectus eius aliquid ullam? Sapiente modi magni libero! Ex velit tenetur dignissimos corrupti? Assumenda reiciendis voluptatem omnis cupiditate, eius blanditiis illo voluptate voluptatibus iure nam, dicta voluptas perspiciatis sit labore reprehenderit, ad porro repellendus totam in inventore ex fugit. Iste ea perferendis obcaecati nam deserunt distinctio corrupti, animi alias ex, fugit doloribus aliquam. Eius dolorum impedit voluptatem molestiae facere eaque aperiam maiores, ab quis velit explicabo quae laboriosam voluptatibus quos sequi, minima exercitationem? Et sint itaque fugiat, expedita, praesentium impedit aspernatur in illo aut soluta ipsa, nam eos eum dignissimos facere temporibus! Ab sint eligendi ratione, fugiat iure quos maxime vel molestiae. Enim, ut. Atque magni numquam tempora, nemo veniam recusandae laboriosam ad nulla.</p>
+            </article>
+            <article>
+                <img src="/images/back1.jpg" alt="">
+            </article>
+        </section>
+    </main>
+    <main>    
+        <section class="two">
+            <div class="title">
+                <h1>KOREAIT ACADEMY</h1>
+            </div>
+            <div class="content two">
+                <article class="box"><img src="/images/background1.jpg" alt=""></article>
+                <article class="box"><img src="/images/background2.jpg" alt=""></article>
+                <article class="box"><img src="/images/background3.jpg" alt=""></article>
+                <article class="box"><img src="/images/background4.jpg" alt=""></article>
+                <article class="box"><img src="/images/background5.jpg" alt=""></article>
+                <article class="box"><img src="/images/background6.jpg" alt=""></article>
+                <article class="box"><img src="/images/background1.jpg" alt=""></article>
+                <article class="box"><img src="/images/background2.jpg" alt=""></article>
+            </div>
+        </section>
+        <footer>
+            &copy; Copyrights By Koreait Academy - <a href="/admin/login">관리자</a>
+        </footer>
+    </main>
+</body>
+</html>
