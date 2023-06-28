@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <h1 th:if="${session.sessInfo == null}" th:text="로그인 해 주세요"></h1>
+    <h1>로그인 페이지</h1>
+    <form>
+        <label>이메일</label>
+        <input type="text" name="email" class="passwd">
+        <label>비밀번호</label>
+        <input type="password" name="passwd" class="passwd">
+
+        <button type="button" class="btn">로그인</button>
+    </form>
+
+    <script>
+        let btn = document.querySelector(".btn");
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let obj = {
+                email: document.querySelector(".email").value,
+                passwd: $(".passwd").val
+            };
+
+            $.ajax({
+                    type: "post",
+                    url : "/login",
+                    dataType: "json",
+                    data: obj,
+                    success: function(res){
+                        if(res.msg == "failure"){
+                            alert("가입된 정보가 없습니다."):
+                        } else {
+                            location.href = "/main";
+                        }
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

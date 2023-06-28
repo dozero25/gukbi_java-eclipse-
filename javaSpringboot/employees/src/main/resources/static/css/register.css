@@ -1,0 +1,88 @@
+@charset 'utf-8';
+
+.container {
+    background-color: #ffffff;
+    width: 420px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 2px 1px #dbdbdb;
+
+    padding: 60px 40px;
+}
+
+.container h1 {
+    font-size: 24px;
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.container form label {
+    display: block;
+    margin-bottom: 5px 0px;
+}
+
+.container form input[type='text'], .container form input[type='password'] {
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    padding: 14px 12px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+
+    margin-bottom: 15px;
+}
+
+.container form input[type='text']:focus, .container form input[type='password']:focus {
+    box-shadow: 0 0 2px 1px rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
+}
+
+.container form input[type='radio'] {
+    margin-right: 5px;
+}
+
+.selWrap {
+    display: flex;
+    margin-top: 10px;
+}
+.selBox {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.selBox select {
+    width: 98%;
+    padding: 10px 0px;
+    border: 1px solid #dbdbdb;
+}
+
+.btn-wrap {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-wrap button {
+    padding: 15px 5px;
+    
+    border: 1px solid #86b7fe;
+    border-radius: 4px;
+    background-color: #86b7fe;
+    color: #ffffff;
+
+    cursor: pointer;
+
+}
+
+.btn-wrap button:hover {
+    opacity: 0.9;
+}
+
+p {
+    margin-top: 10px;
+    text-align: center;
+}

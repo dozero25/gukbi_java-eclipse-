@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <h1>사원 목록 페이지</h1>
+        <a href="/upload">이미지 업로드</a>
+        <a href="/list">사원 목록 페이지</a>
+
+        <form id="frm-upload">
+            <label>이미지 업로드</label>
+            <input type="file" name="uploadFile" required>
+            <button type="button" onclick="fileUpload()">이미지 업로드</button>
+        </form>
+    </main>
+    <footer th:insert="~{fragment/footer::footers}"></footer>
+
+    <script>
+        function fileUpload(){
+            let frmData = new FormData($("#frm-upload")[0]);
+
+            $.ajax({
+                type: "post",
+                url: "/upload",
+                encType: "multipart/form-data",
+                data: frmData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response){
+                    if(response.msg == "success") {
+<!--                        alert(response.oName + " 파일이 업로드 되었습니다.");-->
+                        alert(`${response.oName} (${response.size}byte ) 파일이 업로드 되었습니다.`)
+                    }
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>

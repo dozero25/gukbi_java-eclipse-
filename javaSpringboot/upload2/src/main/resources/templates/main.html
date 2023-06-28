@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>메인 페이지</title>
+</head>
+<body>
+    <header th:insert="~{fragment/header::headers}">
+        <!--세션 정보-->
+    </header>
+
+    <main>
+        <h1>메인 페이지</h1>
+    </main>
+
+    <footer th:insert="~{fragment/footer::footers}">
+    </footer>
+</body>
+</html>

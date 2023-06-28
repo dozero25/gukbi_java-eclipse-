@@ -1,0 +1,17 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Libre+Franklin&family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #222222;
+}

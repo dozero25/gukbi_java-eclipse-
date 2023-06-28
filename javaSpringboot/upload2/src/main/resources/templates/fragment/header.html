@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <div class="sessInfo" th:fragment="headers" th:if="${session.sessInfo != null}">
+        <span>부서명 : [[${session.sessInfo.selDept}]]</span>
+        <span>이메일 : [[${session.sessInfo.email}]]</span>
+        <span>비밀번호 : [[${session.sessInfo.passwd}]]</span>
+        <a href="/logout">로그아웃</a>
+    </div>
+
+    <div class="sessInfo" th:fragment="headers" th:unless="${session.sessInfo != null}">
+        location.href="/login";
+    </div>
+
+</body>
+</html>
