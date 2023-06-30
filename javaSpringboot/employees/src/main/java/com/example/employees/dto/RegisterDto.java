@@ -2,8 +2,22 @@ package com.example.employees.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class RegisterDto {
-    private String korDeptCode;
-    private String korDeptName;
+    private int korEmpId;
+    private String korEmpEmail;
+    private String korEmpPasswd;
+    private String korEmpName;
+    private String korEmpGender;
+    private String korEmpDept;
+    private String korEmpPos;
+    private int korEmpLevel;
+    private String korEmpAuth;
+    private LocalDateTime korEmpCreated;
+    private LocalDateTime korEmpModified;
+    private String korEmpImage_name;
+    private Long korEmpImage_size;
+    private String korEmpTrans_name;
 }

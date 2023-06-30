@@ -4,72 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script th:src="@{/js/jquery.js}"></script>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <title>코리아아이티 아카데미 > 사원 등록 페이지</title>
 </head>
 <body>
+    <div class="alert">
+        <p></p>
+    </div>
     <div class="container">
         <h1>코리아아이티 사원 관리 시스템</h1>
 
         <form action="" autocomplete="off">
-            <label>이메일</label>
-            <input type="text" name="" class="">
+            <label>이메일<span id="chkPage" style="color:red"></span></label>
+            <input type="text" name="korEmpEmail" class="korEmpEmail">
             <label>비밀번호</label>
-            <input type="password" name="" class="">
+            <input type="password" name="korEmpPasswd" class="korEmpPasswd">
             <label>비밀번호 확인</label>
-            <input type="password" name="" class="">
+            <input type="password" name="korEmpPasswdOk" class="korEmpPasswdOk">
             <label>이름</label>
-            <input type="text" name="" class="">
+            <input type="text" name="korEmpName" class="korEmpName">
 
             <label>성별</label>
-            <input type="radio" name="gender" class="gender" value="M" checked><span>남자</span>
-            <input type="radio" name="gender" class="gender" value="W"><span>여자</span>
+            <input type="radio" name="korEmpGender" class="korEmpGender" value="M"><span>남자</span>
+            <input type="radio" name="korEmpGender" class="korEmpGender" value="W"><span>여자</span>
             <div class="selWrap">
                 <div class="selBox">
                     <label>부서</label>
-                    <select name="" class="" id="selDept">
+                    <select name="korEmpDept" class="korEmpDept" id="selDept" onchange="getPos()">
                         <option>부서 선택</option>
                     </select>
                 </div>
                 <div class="selBox">
                     <label>직책</label>
-                    <select name="" class="">
+                    <select name="korEmpPos" class="korEmpPos" id="selPos">
                         <option>직책 선택</option>
                     </select>
                 </div>
             </div>
             <div class="btn-wrap">
-                <button type="button">REGISTER</button>
+                <button type="button" id="reg">REGISTER</button>
             </div>
             <p>
-                <a href="">로그인 페이지로 이동</a>
+                <a href="/main/login">로그인 페이지로 이동</a>
             </p>
         </form>
     </div>
-    <script>
-        $(function() {
-            $.ajax({
-                type: "post",
-                url: "/main/register",
-                dataType: "json",
-                success: function(res) {
-                    let output = "<option>부서 선택</option>"
-                    res.forEach((r) => {
-                        output += `
-                            <option value=${r.korDeptCode}>${r.korDeptName}</option>
-                        `;
-                    });
+    <script th:src="@{/js/register.js}">
 
-<!--                    document.querySelector("#selDept").innerHTML = output;-->
-                        $("#selDept").html(output); // jquery 방식
-                },
-                error: function(err){
-                    console.log(err);
-                }
-            });
-        });
     </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <title>아카데미</title>
+
+</head>
+<body>
+  <header>
+      <div class="header-top">
+          <div class="header-size">[[${web.korWebAdv}]]</div>
+      </div>
+      <div class="header-bottom">
+          <div class="header-size">
+              <div class="header-menu-flex">
+                  <div class="logo">로고</div>
+                  <div class="menu">
+                      <ul>
+                          <li th:each="menu: ${#strings.arraySplit(web.korWebMenus, ';')}"><a href="">[[${menu}]]</a></li>
+                      </ul>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+    <main>
+        <a href="/main/register">사원 가입</a>
+        <a href="/main/login">로그인</a>
+    </main>
+    <footer>
+        <p>[[${web.korWebCopyright}]]</p>
+    </footer>
+
+</body>
+</html>
