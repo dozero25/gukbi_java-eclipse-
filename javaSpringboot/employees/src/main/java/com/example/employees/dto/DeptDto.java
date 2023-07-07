@@ -6,4 +6,5 @@ import lombok.Data;
 public class DeptDto {
     private String korDeptCode;
     private String korDeptName;
+    private int korPosCnt;
 }

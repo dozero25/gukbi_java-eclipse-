@@ -1,12 +1,11 @@
 package com.example.employees.dto;
 
-
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class RegisterDto {
+public class EmployeeDto {
     private int korEmpId;
     private String korEmpEmail;
     private String korEmpPasswd;
@@ -21,13 +20,6 @@ public class RegisterDto {
     private String korEmpImageName;
     private Long korEmpImageSize;
     private String korEmpTransName;
+    private String korDeptName;
+    private String korPosName;
 }
-
-
-
-
-
-
-
-
-

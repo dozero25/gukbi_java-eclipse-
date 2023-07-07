@@ -1,0 +1,55 @@
+@charset 'utf-8';
+table tr {
+            border-bottom : 1px solid #ccc;
+        }
+
+        table tr:nth-child(1) {
+            border-top : 1px solid #ccc;
+        }
+        .tit {
+            background-color: #0b5ed7;
+            color: #fff;
+            text-align: center;
+        }
+        .w-15 {
+            width: 15%;
+            height: 50px;
+        }
+
+        .w-35 {
+            width: 35%;
+            height: 50px;
+            padding-left: 10px;
+        }
+
+        .w-75 {
+            width: 85%;
+            height: 50px;
+            padding-left: 10px;
+        }
+
+        .btn-wrap {
+            text-align: center;
+            margin-top:10px;
+        }
+
+        select {
+            border:1px solid #ced4da;
+            padding:14px 12px;
+            font-size: 16px;
+            font-family: 'Nanum Gothic', sans-serif;
+            outline:0;
+            width: 50%;
+        }
+
+        .btn {
+                    color:#fff;
+                    border:0;
+                    outline:0;
+                    cursor:pointer;
+                    padding: 15px 8px;
+                }
+
+                .clr1 { background-color: #0b5ed7; }
+                .clr2 { background-color: #000;    }
+                .clr3 { background-color: #6f42c1; }

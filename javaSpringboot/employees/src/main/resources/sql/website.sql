@@ -1,17 +1,30 @@
 use tb_koreait;
 
-create table website(
-kor_web_adv varchar(500),
+create table kor_web(
 kor_web_logo varchar(255),
 kor_web_title varchar(100),
 kor_web_menus varchar(100),
-kor_web_rul varchar(255),
-kor_web_hero_name varchar(255),
-kor_web_hero_size bigint,
-kor_web_hero_trans varchar(255),
-kor_web_copyright varchar(255)
+kor_web_url varchar(255),
+kor_web_copyright varchar(255),
+kor_web_term text
 );
 
-INSERT INTO website VALUES('Korea it Adv', '', '코리아아이티 아카데미에 오신 것을 환영합니다.', 'Home;Docs;Download;Github;Contact', '', '', 0, '', '부산광역시 부산진구 서면');
+INSERT INTO kor_web
+VALUES('', '코리아IT아카데미에 오신 것을 환영합니다.', '아카데미소개;IT교육과정;자격증취득과정;국비지원과정;프로젝트;고객상담센터', '코리아IT아카데미는 전국 직영점으로 운영되고 있습니다.', '', '');
 
-UPDATE website SET kor_web_copyright = '부산광역시 부산진구 서면 123-456 Tel> 051-123-456';
+
+UPDATE kor_web
+SET kor_web_logo = #{korWebLogo},
+kor_web_title = #{korWebTitle},
+kor_web_url = #{korWebUrl},
+kor_web_menus = #{korWebMenus},
+kor_web_copyright = #{korWebCopyright},
+kor_web_term = #{korWebTerm}
+
+
+
+
+
+
+
+

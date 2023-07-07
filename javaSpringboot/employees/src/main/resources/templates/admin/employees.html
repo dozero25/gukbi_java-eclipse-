@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지 > 사원 관리 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/common.css?after}">
+    <link rel="stylesheet" th:href="@{/css/admin.css?after}">
+    <link rel="stylesheet" th:href="@{/css/employees.css?after}">
+    <script th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+    <div class="container" th:if="${session.emp != null}">
+        <header th:insert="~{fragment/header::headers}"></header>
+        <main>
+            <div class="main-wrap">
+                <div class="main-left" th:insert="~{fragment/left::lefts}"></div>
+                <div class="main-right">
+                    <div class="main-emp">
+                        <h2>:: KOREAIT EMPLOYEES LIST</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>사번</th>
+                                    <th>사진</th>
+                                    <th>부서/직책/권한</th>
+                                    <th>이메일 주소</th>
+                                    <th>사원명</th>
+                                    <th>등록일</th>
+                                    <th>수정일</th>
+                                    <th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="emp : ${emp}">
+                                    <td th:text="${emp.korEmpId}"></td>
+                                    <td>
+                                        <div class="empPhoto">
+                                            <img th:src="@{../../upload/} + ${emp.korEmpImageName}" alt="">
+                                            <div class="photoBtn">
+<!--                                                <button th:onclick="popup([[${emp.korEmpId}]])">IMAGE UPLOAD</button>-->
+                                                <button th:onclick="modal([[${emp.korEmpId}]])">IMAGE UPLOAD</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <select id="selDept">
+                                            <option value="100">인사과</option>
+                                        </select>
+                                        <select id="selPos">
+                                            <option value="101">인사과장</option>
+                                        </select>
+                                        <select id="selLevel">
+                                            <option value="7">Level 7</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <a href="">
+                                            <strong>
+                                                <u>[[${emp.korEmpEmail}]]</u>
+                                            </strong>
+                                        </a>
+                                    </td>
+                                    <td>[[${emp.korEmpName}]]</td>
+                                    <td>[[${  #temporals.format(emp.korEmpCreated, 'yyyy. MM. dd')   }]]</td>
+                                    <td>[[${  #temporals.format(emp.korEmpModified, 'yyyy-MM-dd')  }]]</td>
+                                    <td>
+                                        <a th:href="@{/admin/employees/view?(korEmpId=${emp.korEmpId})}">
+                                            <button class="btn clr1">
+                                                상세보기
+                                            </button>
+                                        </a>
+                                        <a href="">
+                                            <button class="btn clr2">
+                                                정보수정
+                                            </button>
+                                        </a>
+                                        <a th:onclick="deleteEmp([[${emp.korEmpId}]])">
+                                            <button class="btn clr3" th:disabled="${emp.korEmpLevel == 7}">
+                                                정보삭제
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!--IMAGE UPLOAD(MODAL)-->
+    <style>
+        #modal{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display:none;
+
+        }
+        .close {
+            color: #000;
+            font-size: 15px;
+            margin-top: 10px;
+            text-align: right;
+
+            cursor: pointer;
+        }
+
+        .modal-box {
+            width: 400px;
+            padding: 50px;
+            background-color: #fff;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+        #modal button{
+            width: 100%;
+            background-color: #0b5ed7;
+            border:0;
+            text-align:center;
+            color: #fff;
+            cursor:pointer;
+            margin-top : 10px;
+            height: 50px
+        }
+    </style>
+    <div id="modal">
+        <div class="modal-box">
+            <form>
+                <input type="file" name="uploadFile" class="uploadFile"><br>
+                <button id="btn" type="button">Image Upload</button>
+            </form>
+            <div class="close" th:onclick="closeModal()">X close</div>
+        </div>
+    </div>
+    <script>
+
+
+        function modal(korEmpId){
+            document.querySelector("#modal").style.display = "block";
+            document.querySelector("#btn").addEventListener("click", function () {
+                let frmData = new FormData();
+                frmData.append("uploadFile", $(".uploadFile")[0].files[0]);
+                frmData.append("korEmpId", korEmpId);
+
+<!--                for(let el of frmData) {-->
+<!--                    console.log(el);-->
+<!--                }-->
+
+                $.ajax({
+                    type: "post",
+                    url: "/admin/employees/upload",
+                    encType: "multipart/form-data",
+                    data: frmData,
+                    processData : false,
+                    contentType: false,
+                    cache: false,
+                    success: function(response) {
+                        if(response.msg == "success") {
+                            location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+
+                });
+            });
+
+
+        }
+
+        function closeModal(){
+            document.querySelector("#modal").style.display = "none";
+
+        }
+    </script>
+    <!--// IMAGE UPLOAD(MODAL)   -->
+    <script>
+        function deleteEmp(korEmpId) {
+            if( confirm("사원 정보를 삭제하시겠습니까?\n삭제된 정보는 복원할 수 없습니다.")) {
+                $.ajax({
+                    type: "get",
+                    url: "/admin/employees/delete",
+                    dataType: "json",
+                    data: {korEmpId},
+                    success: function(response) {
+                        if(response.msg == "success") {
+                            alert("사원 정보가 삭제 되었습니다.");
+                            location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+
+                });
+            } else {
+                return false;
+            }
+
+        }
+
+
+
+<!--        function popup(korEmpId){-->
+<!--        window.open(주소, 별명, 옵션)-->
+<!--            let url = "/admin/employees/popup";-->
+<!--            let nick = "upload";-->
+<!--            let opt = "width=400px, height=300px, left=0, top=100, scrollbar=no";-->
+
+<!--            window.open(url, nick, opt);-->
+<!--        }-->
+
+
+    </script>
+
+    <div th:unless="${session.emp != null}">
+        <script>
+            location.href = "/main/login";
+        </script>
+    </div>
+</body>
+</html>

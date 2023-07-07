@@ -44,3 +44,17 @@
             list-style: none;
             margin-left: 50px;
         }
+
+        .util-wrap {
+            display: flex;
+            justify-content:space-between;
+        }
+
+        .util-wrap p {
+            flex-basis : 25%;
+        }
+
+        .util-wrap p a {
+            color: #fff;
+            text-decoration: none;
+        }

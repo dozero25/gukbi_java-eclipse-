@@ -3,37 +3,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/reset.css}">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <title>아카데미</title>
+    <title>[[${web.korWebTitle}]]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/common.css?after}">
+    <link rel="stylesheet" th:href="@{/css/website.css?after}">
 
 </head>
 <body>
-  <header>
-      <div class="header-top">
-          <div class="header-size">[[${web.korWebAdv}]]</div>
-      </div>
-      <div class="header-bottom">
-          <div class="header-size">
-              <div class="header-menu-flex">
-                  <div class="logo">로고</div>
-                  <div class="menu">
-                      <ul>
-                          <li th:each="menu: ${#strings.arraySplit(web.korWebMenus, ';')}"><a href="">[[${menu}]]</a></li>
-                      </ul>
-
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
+    <header th:insert="~{fragment/home/header::web_h}"></header>
     <main>
-        <a href="/main/register">사원 가입</a>
-        <a href="/main/login">로그인</a>
+        <div class="wrapper">
+            [[${web.korWebTerm}]]
+        </div>
     </main>
-    <footer>
-        <p>[[${web.korWebCopyright}]]</p>
-    </footer>
-
+    <footer th:insert="~{fragment/home/footer::web_f}"></footer>
 </body>
 </html>
+
+
+
+
+
+
+
+

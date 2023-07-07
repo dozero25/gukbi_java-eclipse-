@@ -2,22 +2,26 @@
 <html lang="ko">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" th:href="@{/css/reset.css}">
-  <link rel="stylesheet" th:href="@{/css/home.css}">
+    <meta charset="UTF-8">
     <title>관리자 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/common.css?after}">
+    <link rel="stylesheet" th:href="@{/css/admin.css?after}">
 </head>
 <body>
-    <h3>로그인 정보</h3>
-    <div>
-        <span>이메일 주소</span>
-        <span>부서명</span>
-      a
-        <span>접속등급</span>
-        <span>사원가입일</span>
+    <div class="container" th:if="${session.emp != null}">
+        <header th:insert="~{fragment/header::headers}"></header>
+        <main>
+            <div class="main-wrap">
+                <div class="main-left" th:insert="~{fragment/left::lefts}"></div>
+                <div class="main-right">페이지마다 다르게</div>
+            </div>
+        </main>
     </div>
-    <a href="/logout">로그아웃</a>
 
-
+    <div th:unless="${session.emp != null}">
+        <script>
+            location.href = "/main/login";
+        </script>
+    </div>
 </body>
 </html>
