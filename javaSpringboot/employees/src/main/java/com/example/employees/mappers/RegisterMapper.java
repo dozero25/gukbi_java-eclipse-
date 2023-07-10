@@ -18,9 +18,9 @@ public interface RegisterMapper {
     @Select("SELECT * FROM kor_pos WHERE kor_dept_code = #{selDeptValue}")
     List<PosDto> getPos(String selDeptValue);
 
-    @Select("SELECT COUNT(*) FROM kor_emp WHERE kor_emp_email = ${email}")
+    @Select("SELECT COUNT(*) FROM kor_employees WHERE kor_emp_email = ${email}")
     int emailCheck(String email);
 
-    @Insert("INSERT INTO kor_emp VALUES (0, #{korEmpEmail}, #{korEmpPasswd}, #{korEmpName}, #{korEmpGender}, #{korEmpDept}, #{korEmpPos}, 1, 'N', now(), now(), '', 0, '')")
+    @Insert("INSERT INTO kor_employees VALUES (0, #{korEmpEmail}, #{korEmpPasswd}, #{korEmpName}, #{korEmpGender}, #{korEmpDept}, #{korEmpPos}, 1, 'N', now(), now(), '', 0, '')")
     void saveRegister(RegisterDto registerDto);
 }

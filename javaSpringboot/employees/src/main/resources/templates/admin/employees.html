@@ -35,23 +35,26 @@
                                 <tr th:each="emp : ${emp}">
                                     <td th:text="${emp.korEmpId}"></td>
                                     <td>
-                                        <div class="empPhoto">
+                                        <div class="empPhoto" th:if="${emp.korEmpImageName != ''}">
                                             <img th:src="@{../../upload/} + ${emp.korEmpImageName}" alt="">
                                             <div class="photoBtn">
 <!--                                                <button th:onclick="popup([[${emp.korEmpId}]])">IMAGE UPLOAD</button>-->
                                                 <button th:onclick="modal([[${emp.korEmpId}]])">IMAGE UPLOAD</button>
                                             </div>
+                                        </div><div class="empPhoto" th:unless="${emp.korEmpImageName != ''}">
+                                            <img th:src="@{/images/gibon.png}" alt="">
+                                            <div class="photoBtn">
+                                                <button th:onclick="modal([[${emp.korEmpId}]])">IMAGE UPLOAD</button>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <select id="selDept">
-                                            <option value="100">인사과</option>
+                                        <select id="selDept" disabled>
+                                            <option th:each="dept : ${dept}" th:value="${dept.korDeptCode}" th:text="${dept.korDeptName}" th:selected = "${dept.korDeptCode} == ${emp.korEmpDept}"></option>
+
                                         </select>
-                                        <select id="selPos">
-                                            <option value="101">인사과장</option>
-                                        </select>
-                                        <select id="selLevel">
-                                            <option value="7">Level 7</option>
+                                        <select id="selLevel" th:onchange="updateLevel([[${emp.korEmpId}]], this.value)">
+                                            <option th:each="level : ${level}" th:value="${level.korEmpLevelCode}" th:text="${level.korEmpLevelName}" th:selected="${level.korEmpLevelCode}==${emp.korEmpLevel}"></option>
                                         </select>
                                     </td>
                                     <td>
@@ -149,10 +152,6 @@
                 frmData.append("uploadFile", $(".uploadFile")[0].files[0]);
                 frmData.append("korEmpId", korEmpId);
 
-<!--                for(let el of frmData) {-->
-<!--                    console.log(el);-->
-<!--                }-->
-
                 $.ajax({
                     type: "post",
                     url: "/admin/employees/upload",
@@ -191,23 +190,23 @@
                     dataType: "json",
                     data: {korEmpId},
                     success: function(response) {
-                        if(response.msg == "success") {
+                        if(response.db == "success") {
                             alert("사원 정보가 삭제 되었습니다.");
-                            location.reload();
+                            if(response.image = "success") {
+                                alert("이미지 삭제 완료");
+                                location.reload();
+                            }
                         }
                     },
                     error: function(error) {
                         console.log(error);
                     }
-
                 });
             } else {
                 return false;
             }
 
         }
-
-
 
 <!--        function popup(korEmpId){-->
 <!--        window.open(주소, 별명, 옵션)-->
@@ -218,7 +217,35 @@
 <!--            window.open(url, nick, opt);-->
 <!--        }-->
 
+        function updateLevel(korEmpId, korEmpLevel) {
 
+            let obj = {
+                korEmpId,
+                korEmpLevel
+            };
+
+            if( confirm("사원 등급을 수정하시겠습니까?.")) {
+                $.ajax({
+                    type: "get",
+                    url: "/admin/employees/updateLevel",
+                    dataType: "json",
+                    data: obj,
+                    success: function(response) {
+                        if(response.msg == "success") {
+                            alert("사원 등급이 수정 되었습니다.");
+                            location.reload();
+
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                return false;
+            }
+
+        }
     </script>
 
     <div th:unless="${session.emp != null}">
