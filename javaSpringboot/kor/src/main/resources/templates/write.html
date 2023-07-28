@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 글쓰기</title>
+</head>
+<body>
+<th:block th:if="${session.userid == null}">
+    <script>
+        alert("로그인 하신 후 사용할 수 있습니다.");
+        location.href = "/login";
+    </script>
+</th:block>
+
+<a href="/board">글목록</a>
+<form method="post" onsubmit="return frmCheck()" action="/write">
+    <label>글제목</label>
+    <input type="text" name="subject" class="subject" /><br />
+    <label>작성자</label>
+    <input type="text" name="writer" class="writer" readonly th:value="${session.username}" /><br />
+    <input type="submit" value="글저장" />
+</form>
+
+<script>
+    function frmCheck() {
+        let subject = document.querySelector(".subject");
+        let writer  = document.querySelector(".writer");
+
+        if( !subject.value ) {
+            alert("제목을 입력하세요");
+            subject.focus();
+            return false;
+        }
+
+
+    }
+</script>
+</body>
+</html>

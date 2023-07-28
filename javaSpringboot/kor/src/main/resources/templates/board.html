@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록 보기</title>
+</head>
+<body>
+<a href="/write">글쓰기</a>
+<table border="1" style="width:100%;">
+    <tr>
+        <td>번호</td>
+        <td>제목</td>
+        <td>작성자</td>
+        <td>비고</td>
+    </tr>
+    <tr th:each="art: ${art}">
+        <td>[[${art.id}]]</td>
+        <td>[[${art.subject}]]</td>
+        <td>[[${art.writer}]]</td>
+        <td>
+            <a th:href="@{/view?(id=${art.id})}">보기</a>
+            <a href="">수정</a>
+            <a href="">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

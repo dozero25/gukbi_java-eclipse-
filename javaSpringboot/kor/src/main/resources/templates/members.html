@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 목록 보기</title>
+</head>
+<body>
+<a href="/register">회원가입으로 이동</a>
+<a href="/">메인으로 이동</a>
+<table border="1" style="width:50%">
+    <tr>
+        <td>번호</td>
+        <td>아이디</td>
+        <td>이름</td>
+        <td>비밀번호</td>
+        <td>권한</td>
+        <td>비고</td>
+    </tr>
+    <tr th:each="mem: ${mem}">
+        <td th:text="${mem.id}"></td>
+        <td>
+            <strong>
+                <u>[[${mem.userid}]]</u>
+            </strong>
+        </td>
+        <td>[[${mem.username}]]</td>
+        <td>[[${mem.passwd}]]</td>
+        <td>[[${mem.level}]]</td>
+        <td>
+            <a th:href="@{/update?(id=${mem.id})}">수정</a>
+            <a th:href="@{/delete?(id=${mem.id})}">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

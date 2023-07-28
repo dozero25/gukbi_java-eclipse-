@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>다중 게시판 목록</title>
+</head>
+<body>
+<a href="/create">글쓰기</a>
+<table border="1" style="width:100%;">
+    <tr>
+        <td>게시판 코드</td>
+        <td>게시판 제목</td>
+        <td>게시판 색상</td>
+        <td>비고</td>
+    </tr>
+    <tr th:each="c: ${config}">
+        <td>[[${c.code}]]</td>
+        <td>
+            <a th:href="@{/article/list?(code=${c.code})}" target="_blank">
+            <strong>[[${c.title}]]</strong>
+            </a>
+        </td>
+        <td>[[${c.color}]]</td>
+        <td>
+            <a th:href="@{/drop?(code=${c.code})}">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

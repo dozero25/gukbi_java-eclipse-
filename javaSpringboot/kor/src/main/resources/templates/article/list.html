@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>[[${config.title}]]</title>
+</head>
+<body>
+<h2>[[${config.title}]]</h2>
+<a th:href="@{/article/write?(code=${config.code})}">go</a>
+    <table border="1">
+          <tr th:style="|background:${config.color}|">
+            <td>번호</td>
+            <td>게시물 제목</td>
+            <td>게시물 작성자</td>
+            <td>비고</td>
+          </tr>
+        <th:block th:if="${art.isEmpty()}">
+            <tr>
+                <td colspan="4">등록된 게시물이 없습니다.</td>
+            </tr>
+        </th:block>
+        <th:block th:unless="${art.isEmpty()}">
+            <tr th:each="art:${art}">
+                <td>[[${art.id}]]</td>
+                <td>[[${art.subject}]]</td>
+                <td>[[${art.writer}]]</td>
+                <td>
+                    <button th:onclick="editCheck([[${config.code}]], [[${art.id}]])">수정</button>
+
+                    <button th:onclick="delCheck([[${config.code}]], [[${art.id}]])">삭제</button>
+
+                </td>
+            </tr>
+        </th:block>
+    </table>
+<script>
+    function editCheck(code, id){
+        if( confirm(`${id}번 게시물을 수정하시겠습니까?`)){
+            location.href=`/article/edit?code=${code}&id=${id}`;
+        }
+    }
+
+    function delCheck(code, id){
+        if( confirm(`${id}번 게시물을 삭제하시겠습니까?`)){
+            location.href=`/article/delete?code=${code}&id=${id}`;
+        }
+    }
+
+</script>
+</body>
+</html>

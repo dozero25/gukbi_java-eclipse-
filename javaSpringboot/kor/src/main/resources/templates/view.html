@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 글 상세보기</title>
+</head>
+<body>
+<th:block th:if="${session.userid == null}">
+    <script>
+        alert("로그인 하신 후 사용할 수 있습니다.");
+        location.href = "/login";
+    </script>
+</th:block>
+    <a href="/board">글목록</a>
+    <a th:href="@{/reply?(id=${art.id})}">댓글달기</a>
+
+    <br /><br />
+    <label>글제목</label>
+    [[${art.subject}]] <br />
+    <label>작성자</label>
+    [[${art.writer}]] <br />
+</body>
+</html>
