@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 글쓰기</title>
+    <style>
+        .wrap {
+            width:1500px;
+            margin:100px auto;
+        }
+
+        table {
+            width:100%;
+        }
+        tr {
+            height:40px;
+        }
+
+        th, td {
+            border:1px solid #ccc;
+        }
+    </style>
+    <script th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+<div class="wrap">
+    <form>
+        <table>
+            <tr>
+                <td>분류</td>
+                <td>
+                    <select name="korBoardNotice" class="korBoardNotice">
+                        <option value="Y">공지</option>
+                        <option value="N" selected>일반</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td>
+                    <input type="text"
+                           name="korBoardSubject"
+                           class="korBoardSubject" maxlength="50" />
+                </td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>
+                    <input type="text"
+                           name="korBoardWriter"
+                           class="korBoardWriter" maxlength="20" />
+                </td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td>
+                    <texarea id="editor"
+                             name="korBoardContent"
+                             class="korBoardContent"></texarea>
+                </td>
+            </tr>
+            <tr>
+                <td>첨부파일</td>
+                <td>
+                    <input type="file" name="" class="" id="attach" />
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button type="button" class="btn">저장하기</button>
+            <a href="/admin/board">
+                <button type="button">목록으로</button>
+            </a>
+        </div>
+    </form>
+</div>
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+    </style>
+    <script src="/js/ckeditor.js"></script>
+    <script>
+        let myEditor;
+
+        ClassicEditor.create( document.querySelector("#editor") )
+        .then( editor => {
+            myEditor = editor;
+        } );
+
+
+        let korBoardNotice      = document.querySelector(".korBoardNotice");
+
+        let korBoardWriter      = document.querySelector(".korBoardWriter");
+        let korBoardSubject     = document.querySelector(".korBoardSubject");
+        let korBoardContent     = document.querySelector(".korBoardContent");
+        let btn                 = document.querySelector(".btn");
+
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            if( !korBoardSubject.value ) {
+                alert("게시물 제목을 입력하세요.");
+                korBoardSubject.focus();
+                return false;
+            }
+
+            if( !korBoardWriter.value ) {
+                alert("게시물 작성자를 입력하세요.");
+                korBoardWriter.focus();
+                return false;
+            }
+
+            if( !myEditor.getData() ) {
+                alert("게시물 내용을 입력하세요.");
+                korBoardContent.focus();
+                return false;
+            }
+
+            let frmData = new FormData();
+            frmData.append("korBoardNotice",  korBoardNotice.value);
+            frmData.append("korBoardSubject", korBoardSubject.value);
+            frmData.append("korBoardWriter",  korBoardWriter.value);
+            frmData.append("korBoardContent",  myEditor.getData());
+            frmData.append("uploadFile", $("#attach")[0].files[0] );
+
+            $.ajax({
+                type: "post",
+                url : "/admin/board/write",
+                encType: "multipart/form-data",
+                data: frmData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function( res ) {
+                    if( res.msg == "success" ) {
+                        alert("게시물이 저장되었습니다.");
+                        location.href = "/admin/board?page=1";
+                    }
+                }
+            });
+
+        } );
+
+    </script>
+
+</body>
+</html>

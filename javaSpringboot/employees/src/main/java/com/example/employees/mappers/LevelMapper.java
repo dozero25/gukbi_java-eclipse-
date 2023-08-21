@@ -8,7 +8,14 @@ import java.util.List;
 
 @Mapper
 public interface LevelMapper {
-
     @Select("SELECT * FROM kor_level ORDER BY kor_emp_level_code ASC")
     List<LevelDto> getLevel();
 }
+
+
+
+
+
+
+
+

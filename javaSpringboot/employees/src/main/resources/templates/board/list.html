@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 목록</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+        a {
+            text-decoration:none;
+            color:#111;
+            margin-left:5px;
+        }
+
+        .wrap {
+            width:1500px;
+            margin:100px auto;
+        }
+
+        table {
+            width:100%;
+        }
+        tr {
+            height:40px;
+        }
+
+        th, td {
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                    <th>첨부파일</th>
+                    <th>등록일</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board, num: ${board}" style="text-align:center">
+                    <!--
+                    <td th:if="${board.korBoardNotice eq 'N'}">[[${num.size - num.index}]]</td>
+                    <td th:unless="${board.korBoardNotice eq 'N'}">공지</td>
+                    -->
+                    <td>
+                        <th:block th:if="${board.korBoardNotice eq 'N'}">
+                            [[${num.size - num.index}]]
+                        </th:block>
+                        <th:block th:unless="${board.korBoardNotice eq 'N'}">
+                            <span style="background-color:#f00;color:#fff;padding:4px;">NOTICE</span>
+                        </th:block>
+                    </td>
+                    <td style="text-align:left;">
+                        <a th:href="@{/admin/board/view?(korBoardId=${board.korBoardId})}">
+                            <th:block th:if="${board.korBoardReplyGrpSeq > 1}">
+                                <th:block th:each="i: ${ #numbers.sequence(2, board.korBoardReplyGrpSeqIndent) }">
+                                    <i class="fa-solid fa-registered"></i>
+                                </th:block>
+                            </th:block>
+                            <th:block th:unless="${board.korBoardReplyGrpSeq > 1}">
+                                [원본글]
+                            </th:block>
+                            <strong>[[${board.korBoardSubject}]]</strong>
+                        </a>
+                    </td>
+                    <td>[[${board.korBoardWriter}]]</td>
+                    <td>[[${board.korBoardVisit}]]</td>
+                    <td>
+                        <th:block th:if="${board.korBoardUploadName != null}">
+                            <i class="fa-solid fa-download"></i>
+                        </th:block>
+                        <th:block th:unless="${board.korBoardUploadName != null}">
+                            -
+                        </th:block>
+                    </td>
+                    <td>[[${board.korBoardRegdate}]]</td>
+                    <td>
+                        <a th:href="@{/admin/board/modify?(korBoardId=${board.korBoardId})}">수정</a>
+                        <a th:href="@{/admin/board/delete?(korBoardId=${board.korBoardId})}">삭제</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <a href="/admin/board/write">
+                    <button>글쓰기</button>
+                </a>
+            </tfoot>
+        </table>
+        <div>
+
+            <a th:if="${pagination.page > 1}" th:href="@{/admin/board?(page=${pagination.page - 1})}">
+                <button>이전</button>
+            </a>
+            <a th:unless="${pagination.page > 1}">
+                <button>이전</button>
+            </a>
+
+
+            <a th:href="@{/admin/board?(page=${i})}"
+               th:each="i: ${ #numbers.sequence(pagination.startPage, pagination.endPage, 1)}">
+                <button>[[${i}]]</button>
+            </a>
+            <a
+                    th:href="@{/admin/board?(page=${pagination.page + 1})}"
+                    th:if="${pagination.page < pagination.totalPage}">
+                <button>이후</button>
+            </a>
+            <a
+                    th:unless="${pagination.page < pagination.totalPage}">
+                <button>이후</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

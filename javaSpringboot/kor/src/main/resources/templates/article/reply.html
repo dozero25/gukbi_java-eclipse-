@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>답글 작성</title>
+</head>
+<body>
+<h2>[[${config.title}]] > 답글쓰기</h2>
+    <form method="post" action="/article/reply">
+        <label>제목</label>
+        <input type="text" name="subject" required th:value="${art.subject}"><br>
+        <label>작성자</label>
+        <input type="text" name="writer" required th:value="${art.writer}"><br>
+        <label>내용</label>
+        <textarea name="content" cols="100" rows="10" required>[[${art.content}]]</textarea><br>
+
+        <input type="hidden" name="code" th:value="${config.code}">
+        <input type="hidden" name="id" th:value="${art.id}">
+        <input type="hidden" name="grp" th:value="${art.grp}">
+        <input type="hidden" name="depth" th:value="${art.depth}">
+        <input type="submit" value="답글달기 ">
+    </form>
+</body>
+</html>

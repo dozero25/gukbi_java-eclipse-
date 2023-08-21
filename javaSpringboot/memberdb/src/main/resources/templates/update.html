@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+    <h1>Edit User(ID: [[${list.id}]])</h1>
+    <div class="form-box">
+      <form method="post" action="">
+        <label>E-mail:</label>
+        <input type="email" class="email" th:value="${list.email}"><br>
+        <label>First Name:</label>
+        <input type="text" class="first-name" th:value="${list.firstName}"><br>
+        <label>Last Name:</label>
+        <input type="text" class="last-name" th:value="${list.lastName}"><br>
+        <label>Password:</label>
+        <input type="password" class="password" minlength="5" maxlength="20" th:value="${list.password}"><br>
+        <label>Enabled:</label>
+        <input type="radio" class="enabled" th:check="${list.enabled}">true
+        <input type="radio" class="enabled" th:check="${list.enabled}">false
+        <input type="hidden" class="id" th:value="id">
+        <br>
+    
+        <div class="btn-box">
+          <button type="button" onclick="updateList()" class="save-btn">save</button>
+          <button type="reset" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <script>
+        function updateList() {
+
+        let obj = {
+            "email" : $(".email").val(),
+            "firstName" : $(".first-name").val(),
+            "LastName" : $("last-name").val(),
+            "password" : $("password").val(),
+            "enabled" : $("enabled").val(),
+            "id" : $("id").val()
+        };
+
+        console.log(obj);
+
+            $.ajax({
+                type: "post",
+                url : "/update",
+                dataType: "json",
+                data: obj,
+                success: function( res ) {
+                    if( res.msg == "success" ) {
+                        alert("정보가 수정 되었습니다.")
+                        location.href = "/list";
+                    }
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+        }
+    </script>
+</body>
+</html>

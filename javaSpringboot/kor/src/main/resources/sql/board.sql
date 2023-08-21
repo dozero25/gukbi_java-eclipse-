@@ -18,3 +18,10 @@ grp int,
 depth int,
 primary key (id)
 );
+
+
+---- 일치하는 검색
+SELECT * FROM 테이블이름 WHERE 검색 컬럼 = 검색어;
+
+---- 유사어 검색
+SELECT * FROM 테이블이름 WHERE 검색컬럼 LIKE 검색어(%검색어%)

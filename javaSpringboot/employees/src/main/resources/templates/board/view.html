@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 상세보기</title>
+    <style>
+        .wrap {
+            width:1500px;
+            margin:100px auto;
+        }
+
+        table {
+            width:100%;
+        }
+        tr {
+            height:40px;
+        }
+
+        th, td {
+            border:1px solid #ccc;
+        }
+    </style>
+    <script th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+<div class="wrap">
+    <form>
+        <table>
+            <tr>
+                <td style="width:30%">분류</td>
+                <td>
+                    <th:block th:if="${board.korBoardNotice eq 'Y'}">
+                        공지사항
+                    </th:block>
+                    <th:block th:unless="${board.korBoardNotice eq 'Y'}">
+                        일반글
+                    </th:block>
+                </td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td>[[${board.korBoardSubject}]]</td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>[[${board.korBoardWriter}]]</td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td>
+                    <texarea id="editor"
+                             name="korBoardContent"
+                             class="korBoardContent" th:utext="${board.korBoardContent}"></texarea>
+                </td>
+            </tr>
+            <tr>
+                <td>첨부파일</td>
+                <td>
+                    <th:block th:if="${board.korBoardUploadName == null}">
+                        업로드 된 첨부파일이 없습니다.
+                    </th:block>
+                    <th:block th:unless="${board.korBoardUploadName == null}">
+                        [[${board.korBoardUploadName}]] ([[${   #numbers.formatInteger(board.korBoardUploadSize, 3, 'COMMA')      }]] bytes)
+                        <a th:href="@{/admin/board/download?(dir=${board.korBoardUploadUrl}, filename=${board.korBoardUploadTrans})}">Download</a>
+                    </th:block>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <th:block th:if="${board.korBoardNotice eq 'N'}">
+                <a th:href="@{/admin/board/reply?(korBoardId=${board.korBoardId},
+                korBoardReplyGrp = ${board.korBoardReplyGrp},
+                korBoardReplyGrpSeq = ${board.korBoardReplyGrpSeq},
+                       korBoardReplyGrpSeqIndent = ${board.korBoardReplyGrpSeqIndent}       )}">
+                    <button type="button" class="btn">답글달기</button>
+                </a>
+            </th:block>
+
+            <a th:href="@{/admin/board/modify?(korBoardId=${board.korBoardId})}">
+                <button type="button">수정할 내용 보기</button>
+            </a>
+
+            <a th:href="@{/admin/board/delete?(korBoardId=${board.korBoardId})}">
+                <button type="button">삭제</button>
+            </a>
+            <a href="/admin/board">
+                <button type="button">목록으로</button>
+            </a>
+        </div>
+    </form>
+</div>
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+    </style>
+    <script src="/js/ckeditor.js"></script>
+    <script>
+        let myEditor;
+
+        ClassicEditor.create( document.querySelector("#editor") )
+        .then( editor => {
+            myEditor = editor;
+        } );
+
+    </script>
+
+</body>
+</html>

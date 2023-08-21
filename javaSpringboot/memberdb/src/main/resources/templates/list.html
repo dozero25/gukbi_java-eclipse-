@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <style>
+        table {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+        }
+
+        table th {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table td {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <a href="/register">register</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Enabled</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody th:each="list:${list}">
+            <td th:value="${list.id}">[[${list.id}]]</td>
+            <td th:value="${list.email}">[[${list.email}]]</td>
+            <td th:value="${list.firstName}">[[${list.firstName}]]</td>
+            <td th:value="${list.lastName}">[[${list.lastName}]]</td>
+            <td th:check="${list.enabled}">[[${list.enabled}]]</td>
+            
+            <td>
+                <a th:href="@{/update?(id=${list.id})}">Edit</a>
+                <a th:onclick="deleteList([[${list.id}]])">Delete</a>
+            </td>
+        </tbody>
+    </table>
+</body>
+<script>
+    function deleteList(id) {
+            if( confirm("정보를 삭제하시겠습니까?\n삭제된 정보는 복원할 수 없습니다.") ) {
+                $.ajax({
+                    type: "get",
+                    url : "/delete",
+                    dataType: "json",
+                    data: { id },
+                    success: function( res ) {
+                        if(res.msg == "success") {
+                            alert("정보가 삭제 되었습니다.");
+                            location.reload();
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+
+            }else{
+                return false;
+            }
+        }
+</script>
+</html>

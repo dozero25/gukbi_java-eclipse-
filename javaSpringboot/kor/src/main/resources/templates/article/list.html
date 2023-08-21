@@ -23,7 +23,13 @@
         <th:block th:unless="${art.isEmpty()}">
             <tr th:each="art:${art}">
                 <td>[[${art.id}]]</td>
-                <td>[[${art.subject}]]</td>
+                <td>
+                    <a th:href="@{/article/view?(code=${config.code}, id=${art.id})}">
+                        <strong>
+                            <u>[[${art.subject}]]</u>
+                        </strong>
+                    </a>
+                </td>
                 <td>[[${art.writer}]]</td>
                 <td>
                     <button th:onclick="editCheck([[${config.code}]], [[${art.id}]])">수정</button>

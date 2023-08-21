@@ -52,4 +52,7 @@ public interface ConfigMapper {
 
     @Update("UPDATE kortb_${code} SET subject = #{subject}, writer = #{writer}, content=#{content} WHERE id = #{id}")
     void setEdit(ArticleDto articleDto);
+
+    @Insert("INSERT INTO kortb_${code} values(null, #{subject}, #{writer}, #{content}, #{grp}, #{depth}) ")
+    void setReply(ArticleDto articleDto);
 }

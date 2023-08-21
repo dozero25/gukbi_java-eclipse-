@@ -1,5 +1,6 @@
 package com.example.kor.controller;
 
+import com.example.kor.dto.ArticleDto;
 import com.example.kor.dto.ConfigDto;
 import com.example.kor.mapper.ConfigMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,5 @@ public class ConfigController {
         configMapper.dropConfig(code);
         return "redirect:/config";
     }
-
 
 }

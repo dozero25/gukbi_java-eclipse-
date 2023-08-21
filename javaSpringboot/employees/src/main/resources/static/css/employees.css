@@ -8,15 +8,16 @@ table thead tr {
         }
 
         table thead tr th:nth-child(1) { width: 5%; }
-        table thead tr th:nth-child(2) { width: 10%; }
-
+        table thead tr th:nth-child(2) { width: 10%;}
         .empPhoto {
-            text-align: center;
+            text-align:center;
         }
 
         .empPhoto img {
-            width: 80%;
+            width:80%;
         }
+
+
         table thead tr th:nth-child(3) { width: 15%; }
 
         table thead tr th:nth-child(5) { width: 10%; }

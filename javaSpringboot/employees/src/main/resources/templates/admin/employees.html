@@ -35,26 +35,36 @@
                                 <tr th:each="emp : ${emp}">
                                     <td th:text="${emp.korEmpId}"></td>
                                     <td>
-                                        <div class="empPhoto" th:if="${emp.korEmpImageName != ''}">
+                                        <div class="empPhoto" th:if="${not #strings.isEmpty(emp.korEmpImageName)}">
                                             <img th:src="@{../../upload/} + ${emp.korEmpImageName}" alt="">
                                             <div class="photoBtn">
-<!--                                                <button th:onclick="popup([[${emp.korEmpId}]])">IMAGE UPLOAD</button>-->
+                                                <!--<button th:onclick="popup([[${emp.korEmpId}]])">IMAGE UPLOAD</button>-->
                                                 <button th:onclick="modal([[${emp.korEmpId}]])">IMAGE UPLOAD</button>
                                             </div>
-                                        </div><div class="empPhoto" th:unless="${emp.korEmpImageName != ''}">
-                                            <img th:src="@{/images/gibon.png}" alt="">
+                                        </div>
+
+                                        <div class="empPhoto" th:unless="${not #strings.isEmpty(emp.korEmpImageName)}">
+                                            <img th:src="@{/images/nobody.png}" alt="">
                                             <div class="photoBtn">
+                                                <!--<button th:onclick="popup([[${emp.korEmpId}]])">IMAGE UPLOAD</button>-->
                                                 <button th:onclick="modal([[${emp.korEmpId}]])">IMAGE UPLOAD</button>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <select id="selDept" disabled>
-                                            <option th:each="dept : ${dept}" th:value="${dept.korDeptCode}" th:text="${dept.korDeptName}" th:selected = "${dept.korDeptCode} == ${emp.korEmpDept}"></option>
-
+                                            <option
+                                                    th:each="dept: ${dept}"
+                                                    th:value="${dept.korDeptCode}"
+                                                    th:text="${dept.korDeptName}"
+                                                    th:selected="${emp.korEmpDept} == ${dept.korDeptCode}"></option>
                                         </select>
                                         <select id="selLevel" th:onchange="updateLevel([[${emp.korEmpId}]], this.value)">
-                                            <option th:each="level : ${level}" th:value="${level.korEmpLevelCode}" th:text="${level.korEmpLevelName}" th:selected="${level.korEmpLevelCode}==${emp.korEmpLevel}"></option>
+                                            <option
+                                                    th:selected="${emp.korEmpLevel} == ${level.korEmpLevelCode}"
+                                                    th:each = "level: ${level}"
+                                                    th:value="${level.korEmpLevelCode}"
+                                                    th:text="${level.korEmpLevelName}"></option>
                                         </select>
                                     </td>
                                     <td>
@@ -68,18 +78,19 @@
                                     <td>[[${  #temporals.format(emp.korEmpCreated, 'yyyy. MM. dd')   }]]</td>
                                     <td>[[${  #temporals.format(emp.korEmpModified, 'yyyy-MM-dd')  }]]</td>
                                     <td>
+                                        <!--@PathVariable, QueryString-->
                                         <a th:href="@{/admin/employees/view?(korEmpId=${emp.korEmpId})}">
                                             <button class="btn clr1">
                                                 상세보기
                                             </button>
                                         </a>
-                                        <a href="">
+                                        <a th:href="@{/admin/employees/update?(korEmpId=${emp.korEmpId})}">
                                             <button class="btn clr2">
                                                 정보수정
                                             </button>
                                         </a>
                                         <a th:onclick="deleteEmp([[${emp.korEmpId}]])">
-                                            <button class="btn clr3" th:disabled="${emp.korEmpLevel == 7}">
+                                            <button class="btn clr3" th:disabled="${emp.korEmpLevel eq 7}">
                                                 정보삭제
                                             </button>
                                         </a>
@@ -87,165 +98,184 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div>
+
+                            <a th:if="${pagination.page > 1}" th:href="@{/admin/employees?(page=${pagination.page - 1})}">
+                                <button>이전</button>
+                            </a>
+                            <a th:unless="${pagination.page > 1}">
+                                <button>이전</button>
+                            </a>
+
+
+                            <a th:href="@{/admin/employees?(page=${i})}"
+                               th:each="i: ${ #numbers.sequence(pagination.startPage, pagination.endPage, 1)}">
+                                <button>[[${i}]]</button>
+                            </a>
+                            <a
+                                    th:href="@{/admin/employees?(page=${pagination.page + 1})}"
+                                    th:if="${pagination.page < pagination.totalPage}">
+                                <button>이후</button>
+                            </a>
+                            <a
+                                    th:unless="${pagination.page < pagination.totalPage}">
+                                <button>이후</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-    <!--IMAGE UPLOAD(MODAL)-->
+
+    <!-- IMAGE UPLOAD(MODAL) -->
     <style>
-        #modal{
-            position: absolute;
-            top: 0;
-            left: 0;
+        #modal {
+            position:absolute;
+            top:0;
+            left:0;
             width:100%;
             height:100%;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, .7);
             display:none;
-
         }
-        .close {
-            color: #000;
-            font-size: 15px;
-            margin-top: 10px;
-            text-align: right;
 
-            cursor: pointer;
+        .close {
+            color:#fff;
+            font-size:100px;
+            position:absolute;
+            top:20px;
+            right:20px;
+            cursor:pointer;
         }
 
         .modal-box {
-            width: 400px;
+            width:400px;
             padding: 50px;
-            background-color: #fff;
+            background-color:#fff;
             position:absolute;
             top:50%;
             left:50%;
             transform: translate(-50%, -50%);
         }
-        #modal button{
-            width: 100%;
+
+        #modal button {
             background-color: #0b5ed7;
             border:0;
+            color:#fff;
+            padding:10px 12px;
             text-align:center;
-            color: #fff;
-            cursor:pointer;
-            margin-top : 10px;
-            height: 50px
+            cursor: pointer;
+            margin-top:10px;
         }
     </style>
+
     <div id="modal">
+        <span class="close" th:onclick="closeModal()">X</span>
         <div class="modal-box">
             <form>
-                <input type="file" name="uploadFile" class="uploadFile"><br>
-                <button id="btn" type="button">Image Upload</button>
+                <input type="file" name="uploadFile" class="uploadFile" /><br />
+                <button type="button" id="btn">Image Upload</button>
             </form>
-            <div class="close" th:onclick="closeModal()">X close</div>
         </div>
     </div>
+
     <script>
 
-
-        function modal(korEmpId){
+        function modal(korEmpId) {
             document.querySelector("#modal").style.display = "block";
+
             document.querySelector("#btn").addEventListener("click", function () {
                 let frmData = new FormData();
-                frmData.append("uploadFile", $(".uploadFile")[0].files[0]);
+                frmData.append("uploadFile", $(".uploadFile")[0].files[0] );
                 frmData.append("korEmpId", korEmpId);
 
                 $.ajax({
                     type: "post",
-                    url: "/admin/employees/upload",
+                    url : "/admin/employees/upload",
                     encType: "multipart/form-data",
                     data: frmData,
-                    processData : false,
+                    processData: false,
                     contentType: false,
                     cache: false,
-                    success: function(response) {
-                        if(response.msg == "success") {
+                    success: function( res ) {
+                        if(res.msg == "success") {
+                            alert("사원 이미지가 수정 되었습니다.");
                             location.reload();
                         }
                     },
-                    error: function(error) {
-                        console.log(error);
+                    error: function(err) {
+                        console.log(err);
                     }
-
                 });
+
             });
 
-
         }
 
-        function closeModal(){
+        function closeModal() {
             document.querySelector("#modal").style.display = "none";
-
         }
     </script>
-    <!--// IMAGE UPLOAD(MODAL)   -->
+
+    <!-- // IMAGE UPLOAD(MODAL) -->
+
     <script>
         function deleteEmp(korEmpId) {
-            if( confirm("사원 정보를 삭제하시겠습니까?\n삭제된 정보는 복원할 수 없습니다.")) {
+            if( confirm("사원정보를 삭제하시겠습니까?\n삭제된 정보는 복원할 수 없습니다.") ) {
                 $.ajax({
                     type: "get",
-                    url: "/admin/employees/delete",
+                    url : "/admin/employees/delete",
                     dataType: "json",
-                    data: {korEmpId},
-                    success: function(response) {
-                        if(response.db == "success") {
+                    data: { korEmpId },
+                    success: function( res ) {
+                        if(res.msg == "success") {
                             alert("사원 정보가 삭제 되었습니다.");
-                            if(response.image = "success") {
-                                alert("이미지 삭제 완료");
-                                location.reload();
-                            }
+                            location.reload();
                         }
                     },
-                    error: function(error) {
-                        console.log(error);
+                    error: function(err) {
+                        console.log(err);
                     }
                 });
-            } else {
+
+            }else{
                 return false;
             }
-
         }
 
-<!--        function popup(korEmpId){-->
-<!--        window.open(주소, 별명, 옵션)-->
-<!--            let url = "/admin/employees/popup";-->
-<!--            let nick = "upload";-->
-<!--            let opt = "width=400px, height=300px, left=0, top=100, scrollbar=no";-->
 
-<!--            window.open(url, nick, opt);-->
-<!--        }-->
+        function popup(korEmpId) {
+            let url = "/admin/employees/popup";
+            let nick = "upload";
+            let opt = "width=400, height=300, top=100, left=100, location=no";
+
+            window.open(url, nick, opt);
+        }
 
         function updateLevel(korEmpId, korEmpLevel) {
-
             let obj = {
                 korEmpId,
                 korEmpLevel
             };
 
-            if( confirm("사원 등급을 수정하시겠습니까?.")) {
-                $.ajax({
+            $.ajax({
                     type: "get",
-                    url: "/admin/employees/updateLevel",
+                    url : "/admin/employees/updateLevel",
                     dataType: "json",
                     data: obj,
-                    success: function(response) {
-                        if(response.msg == "success") {
+                    success: function( res ) {
+                        if(res.msg == "success") {
                             alert("사원 등급이 수정 되었습니다.");
                             location.reload();
-
                         }
                     },
-                    error: function(error) {
-                        console.log(error);
+                    error: function(err) {
+                        console.log(err);
                     }
                 });
-            } else {
-                return false;
-            }
-
         }
+
     </script>
 
     <div th:unless="${session.emp != null}">

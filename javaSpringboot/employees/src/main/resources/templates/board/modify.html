@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 글 수정하기</title>
+    <style>
+        .wrap {
+            width:1500px;
+            margin:100px auto;
+        }
+
+        table {
+            width:100%;
+        }
+        tr {
+            height:40px;
+        }
+
+        th, td {
+            border:1px solid #ccc;
+        }
+    </style>
+    <script th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+<div class="wrap">
+    <form>
+        <table>
+            <tr>
+                <td>분류</td>
+                <td>
+                    <select name="korBoardNotice" class="korBoardNotice">
+                        <option value="Y" th:selected="${board.korBoardNotice eq 'Y'}">공지</option>
+                        <option value="N" th:selected="${board.korBoardNotice eq 'N'}">일반</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td>
+                    <input th:value="${board.korBoardSubject}"
+                            type="text"
+                           name="korBoardSubject"
+                           class="korBoardSubject" maxlength="50" />
+                </td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td>
+                    <input th:value="${board.korBoardWriter}" type="text"
+                           name="korBoardWriter"
+                           class="korBoardWriter" maxlength="20" />
+                </td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td>
+                    <texarea id="editor"
+                             name="korBoardContent"
+                             class="korBoardContent" th:utext="${board.korBoardContent}"></texarea>
+                </td>
+            </tr>
+            <tr>
+                <td>첨부파일</td>
+                <td>
+                    <input type="file" name="" class="" id="attach" />
+
+                    <th:block th:if="${board.korBoardUploadName == null}">
+                        업로드 된 첨부파일이 없습니다.
+                    </th:block>
+                    <th:block th:unless="${board.korBoardUploadName == null}">
+                        [[${board.korBoardUploadName}]] ([[${   #numbers.formatInteger(board.korBoardUploadSize, 3, 'COMMA')      }]] bytes)
+                        <a href="">Download</a>
+                    </th:block>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button type="button" class="btn">수정할 내용 저장하기</button>
+            <a href="/admin/board">
+                <button type="button">목록으로</button>
+            </a>
+        </div>
+        <input type="hidden" name="korBoardId" class="korBoardId"
+               th:value="${board.korBoardId}">
+
+        <input type="hidden" class="korBoardUploadName"
+               th:value="${board.korBoardUploadName}" />
+
+        <input type="hidden" class="korBoardUploadSize"
+               th:value="${board.korBoardUploadSize}" />
+
+        <input type="hidden" class="korBoardUploadTrans"
+               th:value="${board.korBoardUploadTrans}" />
+    </form>
+</div>
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+    </style>
+    <script src="/js/ckeditor.js"></script>
+    <script>
+        let myEditor;
+
+        ClassicEditor.create( document.querySelector("#editor") )
+        .then( editor => {
+            myEditor = editor;
+        } );
+
+
+        let korBoardId          = document.querySelector(".korBoardId");
+        let korBoardNotice      = document.querySelector(".korBoardNotice");
+        let korBoardWriter      = document.querySelector(".korBoardWriter");
+        let korBoardSubject     = document.querySelector(".korBoardSubject");
+        let korBoardContent     = document.querySelector(".korBoardContent");
+
+        let korBoardUploadName      = document.querySelector(".korBoardUploadName");
+        let korBoardUploadSize      = document.querySelector(".korBoardUploadSize");
+        let korBoardUploadTrans     = document.querySelector(".korBoardUploadTrans");
+
+        let btn                 = document.querySelector(".btn");
+
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            if( !korBoardSubject.value ) {
+                alert("게시물 제목을 입력하세요.");
+                korBoardSubject.focus();
+                return false;
+            }
+
+            if( !korBoardWriter.value ) {
+                alert("게시물 작성자를 입력하세요.");
+                korBoardWriter.focus();
+                return false;
+            }
+
+            if( !myEditor.getData() ) {
+                alert("게시물 내용을 입력하세요.");
+                korBoardContent.focus();
+                return false;
+            }
+
+            let frmData = new FormData();
+            frmData.append("korBoardId",  korBoardId.value);
+            frmData.append("korBoardNotice",  korBoardNotice.value);
+            frmData.append("korBoardSubject", korBoardSubject.value);
+            frmData.append("korBoardWriter",  korBoardWriter.value);
+            frmData.append("korBoardContent",  myEditor.getData());
+
+            frmData.append("korBoardUploadName",    korBoardUploadName.value);
+            frmData.append("korBoardUploadSize",    korBoardUploadSize.value);
+            frmData.append("korBoardUploadTrans",   korBoardUploadTrans.value);
+
+            frmData.append("uploadFile", $("#attach")[0].files[0] );
+
+
+            $.ajax({
+                type: "post",
+                url : "/admin/board/modify",
+                encType: "multipart/form-data",
+                data: frmData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function( res ) {
+                    if( res.msg == "success" ) {
+                        alert("게시물이 수정 되었습니다.");
+                        location.href = "/admin/board?page=1";
+                    }
+                }
+            });
+
+        } );
+
+    </script>
+
+</body>
+</html>

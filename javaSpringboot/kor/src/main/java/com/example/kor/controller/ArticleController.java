@@ -57,4 +57,26 @@ public class ArticleController {
         return "redirect:/article/list?code="+articleDto.getCode();
     }
 
+    @GetMapping("/article/view")
+    public String getView(Model model, @ModelAttribute ArticleDto articleDto) {
+        model.addAttribute("config", configMapper.getTitle(articleDto.getCode()));
+        model.addAttribute("art",  configMapper.getEdit(articleDto));
+       ;
+        return "article/view";
+    }
+
+    @GetMapping("/article/reply")
+    public String getReply(Model model, @ModelAttribute ArticleDto articleDto){
+        model.addAttribute("config", configMapper.getTitle(articleDto.getCode()));
+        model.addAttribute("art",  configMapper.getEdit(articleDto));
+
+        return "article/reply";
+    }
+
+    @PostMapping("/article/reply")
+    public String setReply(@ModelAttribute ArticleDto articleDto) {
+        articleDto.setDepth(articleDto.getDepth()+1);
+        configMapper.setReply(articleDto);
+        return "redirect:/article/list?code="+articleDto.getCode();
+    }
 }

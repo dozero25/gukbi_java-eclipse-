@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지 > 사원 수정 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/common.css?after}">
+    <link rel="stylesheet" th:href="@{/css/admin.css?after}">
+    <link rel="stylesheet" th:href="@{/css/empView.css?after}">
+    <script th:src="@{/js/jquery.js}"></script>
+
+</head>
+<body>
+    <div class="container" th:if="${session.emp != null}">
+        <header th:insert="~{fragment/header::headers}"></header>
+        <main>
+            <div class="main-wrap">
+                <div class="main-left" th:insert="~{fragment/left::lefts}"></div>
+                <div class="main-right">
+                    <div class="main-emp">
+                        <h2>:: KOREAIT EMPLOYEES VIEW</h2>
+                        <div class="tbl">
+                            <table>
+                                <tbody>
+                                <input
+                                        th:value="${emp.korEmpId}"
+                                        type="hidden"
+                                        name="korEmpId"
+                                        class="korEmpId" />
+                                    <tr>
+                                        <td class="tit w-15">사원명</td>
+                                        <td class="w-35">
+                                            <input
+                                                    maxlength="10"
+                                                    th:value="${emp.korEmpName}"
+                                                    type="text" name="korEmpName" class="korEmpName" />
+                                        </td>
+                                        <td class="tit w-15">사원이메일</td>
+                                        <td class="w-35">
+                                            <input maxlength="50"
+                                                    th:value="${emp.korEmpEmail}"
+                                                    type="text" name="korEmpEmail" class="korEmpEmail" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tit w-15">비밀번호</td>
+                                        <td class="w-35">
+                                            <input
+                                                    th:value="${emp.korEmpPasswd    }"
+                                                    type="password" name="korEmpPasswd" class="korEmpPasswd" />
+                                        </td>
+                                        <td class="tit w-15">비밀번호 확인</td>
+                                        <td class="w-35">
+                                            <input type="password" name="korEmpPasswd2" class="korEmpPasswd2" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tit w-15">부서명</td>
+                                        <td class="w-35">
+                                            <select id="selDept" class="korEmpDept">
+                                                <option
+                                                        th:each="dept: ${dept}"
+                                                        th:value="${dept.korDeptCode}"
+                                                        th:text="${dept.korDeptName}"
+                                                        th:selected="${emp.korEmpDept} == ${dept.korDeptCode}"></option>
+                                            </select>
+                                        </td>
+                                        <td class="tit w-15">직책</td>
+                                        <td class="w-35">
+                                            <select name="korEmpPos"
+                                                    class="korEmpPos" id="selPos"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tit w-15">사원등급</td>
+                                        <td class="w-35">
+                                            <select id="selLevel"
+                                                    name="korEmpLevel"
+                                                    class="korEmpLevel">
+                                                <option
+                                                        th:selected="${emp.korEmpLevel} == ${level.korEmpLevelCode}"
+                                                        th:each = "level: ${level}"
+                                                        th:value="${level.korEmpLevelCode}"
+                                                        th:text="${level.korEmpLevelName}"></option>
+                                            </select>
+                                        </td>
+                                        <td class="tit w-15">성별</td>
+                                        <td class="w-35">
+                                            <input
+                                                    th:checked="${emp.korEmpGender eq 'M'}"
+                                                    type="radio" name="korEmpGender" class="korEmpGender" value="M"> <span>남자</span>
+
+                                            <input
+                                                    th:checked="${emp.korEmpGender eq 'W'}"
+                                                    type="radio" name="korEmpGender" class="korEmpGender" value="W"> <span>여자</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="btn-wrap">
+                                <button onclick="chkUpdate()">사원정보변경</button>
+                                <a th:href="@{/admin/employees}">
+                                    <button>사원목록</button>
+                                </a>
+                                <a th:onclick="deleteEmp([[${emp.korEmpId}]])">
+                                    <button th:disabled="${emp.korEmpLevel eq 7}">사원삭제</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function deleteEmp(korEmpId) {
+            if( confirm("사원정보를 삭제하시겠습니까?\n삭제된 정보는 복원할 수 없습니다.") ) {
+                $.ajax({
+                    type: "get",
+                    url : "/admin/employees/delete",
+                    dataType: "json",
+                    data: { korEmpId },
+                    success: function( res ) {
+                        if(res.msg == "success") {
+                            alert("사원 정보가 삭제 되었습니다.");
+                            location.href = "/admin/employees";
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+
+            }else{
+                return false;
+            }
+        }
+
+
+        $(function() {
+            $.ajax({
+                type: "get",
+                url : "/admin/category/dept",
+                dataType: "json",
+                data: {      deptCode: [[${emp.korEmpDept}]]     },
+                success: function( res ) {
+                    let output = "";
+                    res.forEach( (r) => {
+                        output += `<option value=${r.korPosCode} ${   r.korPosCode == [[${emp.korEmpPos}]] ? 'selected' : '' }>${r.korPosName}</option>`;
+                        console.log([[${emp.korEmpPos}]]);
+                        console.log(r.korPosCode);
+                    } );
+
+                    document.querySelector("#selPos").innerHTML = output;
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+
+
+        function updateLevel(korEmpId, korEmpLevel) {
+            let obj = {
+                korEmpId,
+                korEmpLevel
+            };
+
+            $.ajax({
+                    type: "get",
+                    url : "/admin/employees/updateLevel",
+                    dataType: "json",
+                    data: obj,
+                    success: function( res ) {
+                        if(res.msg == "success") {
+                            alert("사원 등급이 수정 되었습니다.");
+                            location.reload();
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+        }
+
+
+    function chkUpdate() {
+            let korEmpPasswd    = document.querySelector(".korEmpPasswd");
+            let korEmpPasswd2   = document.querySelector(".korEmpPasswd2");
+
+            if( !korEmpPasswd.value ) {
+                alert("비밀번호를 입력해 주세요");
+                korEmpPasswd.focus();
+                return false;
+            }
+
+            if( !korEmpPasswd2.value ) {
+                alert("비밀번호 확인을 입력해 주세요");
+                korEmpPasswd2.focus();
+                return false;
+            }
+
+            if( korEmpPasswd.value != korEmpPasswd2.value ) {
+                alert("비밀번호가 일치하지 않습니다. 비밀번호를 다시 입력해 주세요");
+                korEmpPasswd.value = "";
+                korEmpPasswd2.value = "";
+                korEmpPasswd.focus();
+                return false;
+            }
+
+            let obj = {
+                korEmpId        : $(".korEmpId").val(),
+                korEmpEmail     : $(".korEmpEmail").val(),
+                korEmpPasswd    : $(".korEmpPasswd").val(),
+                korEmpName      : $(".korEmpName").val(),
+                korEmpGender    : $("input[type='radio']:checked").val(),
+                korEmpDept      : $(".korEmpDept").val(),
+                korEmpPos       : $(".korEmpPos").val(),
+                korEmpLevel       : $(".korEmpLevel").val()
+            };
+
+            console.log(obj);
+
+            $.ajax({
+                type: "post",
+                url : "/admin/employees/update",
+                dataType: "json",
+                data: obj,
+                success: function( res ) {
+                    if( res.msg == "success" ) {
+                        alert("사원 정보가 수정 되었습니다.")
+                        location.href = "/admin/employees?page=1";
+                    }
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+
+
+    }
+
+    </script>
+
+    <div th:unless="${session.emp != null}">
+        <script>
+            location.href = "/main/login";
+        </script>
+    </div>
+</body>
+</html>

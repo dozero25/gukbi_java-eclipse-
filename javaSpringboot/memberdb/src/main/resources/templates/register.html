@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <title>reigster</title>
+    <style>
+      .form-box {
+        border: 1px solid #000000;
+        border-radius: 3px;
+
+        width: 300px;
+      }
+
+      input {
+
+        border-radius: 3px;
+        margin-bottom: 10px;
+      }
+
+      .btn-box {
+        display: flex;
+        justify-content: center;
+      }
+
+
+    </style>
+</head>
+<body>
+  <h1>Add New User</h1>
+  <div class="form-box">
+    <form method="post" action="">
+      <label>E-mail:</label>
+      <input type="email" class="email"><br>
+      <label>First Name:</label>
+      <input type="text" class="first-name"><br>
+      <label>Last Name:</label>
+      <input type="text" class="last-name"><br>
+      <label>Password:</label>
+      <input type="password" class="password" minlength="5" maxlength="20"><br>
+      <label>Enabled:</label>
+      <input type="radio" class="enabled" value="true">true
+      <input type="radio" class="enabled" value="false">false
+      <br>
+  
+      <div class="btn-box">
+        <button type="button" onclick="onSubmit()" class="save-btn">save</button>
+        <button type="reset" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+
+  function onSubmit(){
+    const email = document.querySelector(".email");
+    const firstName = document.querySelector(".first-name");
+    const LastName = document.querySelector(".last-name");
+    const password = document.querySelector(".password");
+    const enabled = document.querySelector(".enabled");
+  
+      if(password.value < 5) {
+        password.focus();
+        return false;
+      }
+
+
+        let obj = {
+            "email" : email.value,
+            "firstName" : firstName.value,
+            "LastName" : LastName.value,
+            "password" : password.value,
+            "enabled" : enabled.vlaue
+        };
+
+        $.ajax({
+            type: "post",
+            url : "/register",
+            dataType: "json",
+            data: obj,
+            success: function( res ) {
+                if( res.msg == "success" ) {
+                    alert("회원가입이 완료 되었습니다.");
+                    location.href = "/list";
+                }
+            }
+        });
+  }
+</script>
+</html>
