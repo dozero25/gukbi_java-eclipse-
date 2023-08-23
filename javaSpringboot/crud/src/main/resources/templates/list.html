@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원목록 출력</title>
+</head>
+<body>
+<a href="/add">회원가입</a>
+<a href="/list">전체회원보기</a>
+<table border="1" style="width:50%">
+    <tr>
+        <td>번호</td>
+        <td>아이디</td>
+        <td>비밀번호</td>
+        <td>이름</td>
+        <td>비고</td>
+    </tr>
+    <tr th:each="m: ${mem}">
+        <td>[[${m.mId}]]</td>
+        <td>[[${m.mUid}]]</td>
+        <td>****</td>
+        <td>[[${m.mName}]]</td>
+        <td>
+            <a th:href="@{/edit?(mId=${m.mId})}">수정</a>
+            <a th:href="@{/delete?(mId=${m.mId})}">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

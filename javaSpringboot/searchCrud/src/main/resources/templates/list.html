@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+    <style>
+        table {
+            border: 1px solid #dbdbdb;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <a href="/register">회원가입</a>
+    <a href="/list">전체회원보기</a>
+    
+    <h3 th:each="c : ${count}">회원수:[[${c}]]</h3>
+
+    <div>
+        <form th:action="@{/list}" method="get">
+            <input type="text" id="word" name="word">
+            <button>검색</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>아이디</th>
+                <th>비밀번호</th>
+                <th>이름</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody th:each="r : ${reg}">
+            <td>[[${r.id}]]</td>
+            <td>[[${r.userId}]]</td>
+            <td>****</td>
+            <td>[[${r.name}]]</td>
+            <td>
+                <a href="">수정</a>
+                <a href="">삭제</a>
+            </td>
+        </tbody>
+    </table>
+
+</body>
+</html>

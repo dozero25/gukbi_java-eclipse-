@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 출력</title>
+</head>
+<body>
+<a href="/list">회원목록</a>
+<form method="post" action="/save" onsubmit="return frmCheck()">
+    <label>아이디</label>
+    <input type="text" name="mUid" required /><br />
+
+    <label>비밀번호</label>
+    <input type="password" name="mPWD" class="mPWD" required /><br />
+
+    <label>비밀번호 확인</label>
+    <input type="password" name="mPWD2" class="mPWD2" required /><br />
+
+    <label>이름</label>
+    <input type="text" name="mName" required /><br />
+    <input type="submit" value="회원가입">
+</form>
+
+<script>
+
+    function frmCheck() {
+        let mPWD    = document.querySelector(".mPWD");
+        let mPWD2   = document.querySelector(".mPWD2");
+
+        if( mPWD.value != mPWD2.value ) {
+            alert("비밀번호가 일치하지 않습니다.");
+            mPWD.value = "";
+            mPWD2.value = "";
+            mPWD.focus();
+
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>
+
